@@ -12,11 +12,10 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: 'Nim - Personal website template',
+  title: 'Alex Arvanitidis - Machine Learning Engineer & Full-Stack Developer',
   description:
-    'Nim is a free and open-source personal website template built with Next.js 15, React 19 and Motion-Primitives.',
+    'Building and deploying AI systems, fine-tuned LLMs, and scalable platforms with a product-driven approach. 10+ years of full-stack engineering experience with a strong focus on ML, deep learning, and cloud infrastructure.',
 }
-
 const geist = Geist({
   variable: '--font-geist',
   subsets: ['latin'],

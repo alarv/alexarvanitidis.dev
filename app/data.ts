@@ -29,48 +29,105 @@ type SocialLink = {
 
 export const PROJECTS: Project[] = [
   {
-    name: 'Motion Primitives Pro',
+    id: 'qsarion',
+    name: 'QSARion AI Agent',
     description:
-      'Advanced components and templates to craft beautiful websites.',
-    link: 'https://pro.motion-primitives.com/',
+      'A chemical AI agent that can predict molecular properties given a substance.',
     video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/newProfileItem/d898be8a-7037-4c71-af0c-8997239b050d.mp4?_a=DATAdtAAZAA0',
-    id: 'project1',
+      'https://res.cloudinary.com/dofjdeyrh/video/upload/v1742207519/qsarion_qurfwo.mp4',
+    link: 'https://huggingface.co/spaces/alarv/QSARion-smolagents',
   },
   {
-    name: 'Motion Primitives',
-    description: 'UI kit to make beautiful, animated interfaces.',
-    link: 'https://motion-primitives.com/',
+    id: 'jaqpot',
+    name: 'Jaqpot',
+    description:
+      'A machine learning model hosting platform, handling deployment, API management, and fine-tuning.',
     video:
-      'https://res.cloudinary.com/read-cv/video/upload/t_v_b/v1/1/profileItems/W2azTw5BVbMXfj7F53G92hMVIn32/XSfIvT7BUWbPRXhrbLed/ee6871c9-8400-49d2-8be9-e32675eabf7e.mp4?_a=DATAdtAAZAA0',
-    id: 'project2',
+      'https://res.cloudinary.com/dofjdeyrh/video/upload/v1742208147/jaqpot_iehfis.mp4',
+    link: 'https://jaqpot.org',
   },
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
-    company: 'Reglazed Studio',
-    title: 'CEO',
-    start: '2024',
+    id: 'ntua',
+    title: 'Machine Learning Engineer',
+    company: 'National Technical University of Athens',
+    start: 'Feb 2024',
     end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work1',
+    link: 'https://jaqpot.org',
   },
   {
-    company: 'Freelance',
-    title: 'Design Engineer',
-    start: '2022',
-    end: '2024',
-    link: 'https://ibelick.com',
-    id: 'work2',
+    id: 'mercedes',
+    title: 'Senior Full-stack Engineer',
+    company: 'Mercedes Benz via Mimacom',
+    start: 'Feb 2023',
+    end: 'Feb 2024',
+    link: 'https://www.mercedes-benz.io/',
   },
   {
-    company: 'Freelance',
-    title: 'Front-end Developer',
-    start: '2017',
-    end: 'Present',
-    link: 'https://ibelick.com',
-    id: 'work3',
+    id: 'gigabank',
+    title: 'Senior Full-stack Engineer',
+    company: 'Gigabank',
+    start: 'Jul 2022',
+    end: 'Feb 2023',
+    link: 'https://gigabank.jp',
+  },
+  {
+    id: 'impala',
+    title: 'Senior Full-stack Engineer',
+    company: 'Impala Travel',
+    start: 'Mar 2021',
+    end: 'Jun 2022',
+    link: 'https://impala.travel/',
+  },
+  {
+    id: 'glovo',
+    title: 'Senior Full-stack Engineer',
+    company: 'Glovo',
+    start: 'Feb 2020',
+    end: 'Feb 2021',
+    link: 'https://glovoapp.com',
+  },
+  {
+    id: 'telefonica',
+    title: 'Senior Full-stack Engineer',
+    company: 'Alpha Innovation, Telefonica',
+    start: 'Nov 2018',
+    end: 'Feb 2020',
+    link: 'https://perspectives.health/',
+  },
+  {
+    id: 'marfeel',
+    title: 'Full-stack Engineer',
+    company: 'Marfeel',
+    start: 'Apr 2016',
+    end: 'Nov 2018',
+    link: 'https://marfeel.com',
+  },
+  {
+    id: 'cern',
+    title: 'Summer Student',
+    company: 'CERN',
+    start: 'Jun 2014',
+    end: 'Sep 2014',
+    link: 'https://cern.ch',
+  },
+  {
+    id: 'eurodyn',
+    title: 'Full-stack Engineer',
+    company: 'European Dynamics',
+    start: 'Apr 2014',
+    end: 'Apr 2016',
+    link: 'https://eurodyn.com',
+  },
+  {
+    id: 'sapila',
+    title: 'Full-stack Engineer',
+    company: 'Sapila.gr (Personal Project)',
+    start: '2014',
+    end: '2020',
+    link: 'https://sapila.gr',
   },
 ]
 
@@ -89,7 +146,8 @@ export const BLOG_POSTS: BlogPost[] = [
     uid: 'blog-2',
   },
   {
-    title: 'What I learned from my first year of freelancing',
+    title:
+      'The overlooked emotional needs of senior professionals in tech companies',
     description:
       'A look back at my first year of freelancing and what I learned',
     link: '/blog/exploring-the-intersection-of-design-ai-and-design-engineering',
@@ -98,22 +156,8 @@ export const BLOG_POSTS: BlogPost[] = [
 ]
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  {
-    label: 'Github',
-    link: 'https://github.com/ibelick',
-  },
-  {
-    label: 'Twitter',
-    link: 'https://twitter.com/ibelick',
-  },
-  {
-    label: 'LinkedIn',
-    link: 'https://www.linkedin.com/in/ibelick',
-  },
-  {
-    label: 'Instagram',
-    link: 'https://www.instagram.com/ibelick',
-  },
+  { label: 'GitHub', link: 'https://github.com/alarv' },
+  { label: 'LinkedIn', link: 'https://www.linkedin.com/in/alexarvanitidis/' },
 ]
 
-export const EMAIL = 'your@email.com'
+export const EMAIL = 'alarvfm@gmail.com'
