@@ -1,3 +1,4 @@
+import { formatDistance } from 'date-fns/formatDistance'
 import type { MDXComponents } from 'mdx/types'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -19,5 +20,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </figure>
       )
     },
+    PublishedOn: ({
+      date
+    }: {
+      date: Date
+    }) => {
+      return (
+        <p title={date.toLocaleDateString()} className='text-gray-500'>Published {formatDistance(date, new Date(), { addSuffix: true })}</p>
+      )
+    }
   }
 }
