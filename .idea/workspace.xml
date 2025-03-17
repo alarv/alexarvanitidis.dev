@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e92d63a-8c5b-49fe-af18-bbfeed810539" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/components/home.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/opengraph-image.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +17,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
   <component name="KubernetesApiProvider"><![CDATA[{
@@ -25,6 +28,7 @@
 }]]></component>
   <component name="ProjectId" id="2uRScFaDwu7icW1EvvxkUmWog6V" />
   <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -37,7 +41,7 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/alex.arvanitidis/Projects/alexarvanitidis.dev/public",
+    "last_opened_file_path": "/Users/alex.arvanitidis/Projects/alexarvanitidis.dev/app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -50,11 +54,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/app/blog/run-and-deploy-an-llm-part2" />
       <recent name="$PROJECT_DIR$/app/blog" />
       <recent name="$PROJECT_DIR$/app/blog/the-death-of-boring-docs" />
-      <recent name="$PROJECT_DIR$/app" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -73,7 +77,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742209970769</updated>
-      <workItem from="1742209972304" duration="3556000" />
+      <workItem from="1742209972304" duration="5425000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add 2 blogposts">
       <option name="closed" value="true" />
@@ -99,16 +103,35 @@
       <option name="project" value="LOCAL" />
       <updated>1742213305063</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fix: add syntax-highlighter types">
+      <option name="closed" value="true" />
+      <created>1742213560933</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1742213560933</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix: add missing prettier package">
+      <option name="closed" value="true" />
+      <created>1742213709724</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1742213709724</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="feat: add 2 blogposts" />
     <MESSAGE value="chore: commit workspace.xml" />
     <MESSAGE value="feat: add 2 blogposts on llms" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add 2 blogposts on llms" />
+    <MESSAGE value="fix: add syntax-highlighter types" />
+    <MESSAGE value="fix: add missing prettier package" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: add missing prettier package" />
   </component>
 </project>
