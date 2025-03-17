@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e92d63a-8c5b-49fe-af18-bbfeed810539" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/components/home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/opengraph-image.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742209970769</updated>
-      <workItem from="1742209972304" duration="5425000" />
+      <workItem from="1742209972304" duration="5567000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add 2 blogposts">
       <option name="closed" value="true" />
@@ -119,7 +118,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742213709724</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix: add opengraph data">
+      <option name="closed" value="true" />
+      <created>1742219877565</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1742219877565</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +139,7 @@
     <MESSAGE value="feat: add 2 blogposts on llms" />
     <MESSAGE value="fix: add syntax-highlighter types" />
     <MESSAGE value="fix: add missing prettier package" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: add missing prettier package" />
+    <MESSAGE value="fix: add opengraph data" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: add opengraph data" />
   </component>
 </project>
