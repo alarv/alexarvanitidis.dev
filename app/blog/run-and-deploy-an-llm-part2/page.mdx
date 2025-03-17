@@ -1,0 +1,154 @@
+# Deploy a streaming LLM with Terraform, Kubernetes and vLLM: the complete stack (part 2)
+
+<PublishedOn date={new Date(2024,11,15)}/>
+
+<Cover
+  src="/vllm-logo-text-light.png"
+  alt=""
+  caption=""
+/>
+
+As promised in [part 1](/blog/run-and-deploy-an-llm-part1), here's how we deployed our LLM workload into production using AWS, Terraform, and Kubernetes with GPU support. Let's dive into the infrastructure setup that made this possible!
+
+## A note on models and hardware requirements
+
+Before we jump into the infrastructure setup, let's talk about what we're actually deploying. We're using pretrained models here - specifically pulling the weights from Hugging Face. Training these models from scratch would require massive computational resources and isn't necessary for most use cases.
+
+However, even for inference (running the model to get predictions), LLMs need serious computational power. A GPU isn't just nice to have - it's a necessity. We're using AWS's g4dn.2xlarge instances which come with NVIDIA T4 GPUs. These instances can handle the load, but they come at a cost - expect to pay around $1 per hour of usage. This might sound steep, but it's actually quite reasonable considering the computational power you're getting.
+
+## Setting up GPU nodes with Terraform
+
+First up, we needed some serious GPU power. Here's the slice of our Terraform configuration that sets up g4dn.2xlarge instances:
+
+```hcl
+# GPU node group
+gpu_node_group = {
+  create_launch_template     = false
+  use_custom_launch_template = false
+  disk_size                  = 50
+  instance_types            = ["g4dn.2xlarge"]
+  min_size                  = 1
+  subnet_ids                = slice(dependency.vpc.outputs.private_subnets, 0, 2)
+  max_size                  = 2
+  desired_size              = 1
+  ami_type                  = "AL2_x86_64_GPU"
+  iam_role_attach_cni_policy = true
+  labels = {
+    "environment" = "production"
+    "workload-type" = "gpu"
+    "nvidia.com/gpu" = "true"
+  }
+  taints = [{
+    key    = "nvidia.com/gpu"
+    value  = "true"
+    effect = "NO_SCHEDULE"
+  }]
+  update_config = {
+    max_unavailable = 1
+  }
+}
+```
+
+This configuration ensures our GPU workloads get their own dedicated nodes - no resource competition here!
+
+## Configuring GPU node selection
+
+Next, we made sure our LLM gets priority access to those GPU resources. Here's how we configured our helm values:
+
+```yaml
+  resources:
+    limits:
+      nvidia.com/gpu: 1
+      cpu: "8000m"
+      memory: "32Gi"
+    requests:
+      nvidia.com/gpu: 1
+      cpu: "6000m"
+      memory: "30Gi"
+  nodeSelector:
+    workload-type: gpu
+  tolerations:
+    - key: nvidia.com/gpu
+      operator: Exists
+      effect: NoSchedule
+```
+
+## Our LLM container setup
+
+For speed and efficiency, we went with [vLLM](https://github.com/vllm-project/vllm) for our LLM service. Here's our Kubernetes configuration:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-service
+spec:
+  template:
+    spec:
+      containers:
+      - name: llm
+        image: ghcr.io/vllm-project/vllm:latest
+        command: [
+          "vllm",
+          "serve",
+          "mistralai/Mistral-7B-Instruct-v0.3",
+          "--trust-remote-code",
+          "--enable-chunked-prefill",
+          "--max_num_batched_tokens", "1024",
+          "--dtype=half",
+          "--tokenizer-mode", "mistral",
+          "--gpu-memory-utilization", "1.0",
+          "--max-model-len", "6944",
+          "--enforce-eager"
+        ]
+        volumeMounts:
+        - name: model-storage
+          mountPath: /models
+      volumes:
+      - name: model-storage
+        persistentVolumeClaim:
+          claimName: llm-model-storage
+```
+
+Depending on your hardware, you may have to twiddle a bit with the vllm arguments. I got very helpful warning messages from vLLM each time and searching their issues on GitHub I found a solution each time!
+
+Of course, you have to understand what each argument does and what you're changing and for that I'd suggest following the Hugging face course on NLP and the transformers library [here](https://huggingface.co/learn/nlp-course/en/chapter1/1)
+
+## Storage configuration
+
+For those massive model weights, we set up persistent storage:
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mistral-7b
+  namespace: jaqpot
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  storageClassName: gp2
+  volumeMode: Filesystem
+```
+
+## The grand finale: Deployment time!
+
+Here's how we orchestrated everything (drumroll, please 🥁):
+1. First, we let Terraform work its infrastructure magic with the GPU nodes
+2. Then, we waited for our new nodes to be ready
+3. Next, we created the persistent volume claim
+4. Finally, we deployed our LLM service
+
+Some key things we monitor:
+- GPU utilization tracking through Prometheus/Grafana
+- Autoscaling based on our GPU metrics
+- Comprehensive logging and monitoring
+
+And there you have it! Our LLM is now running smoothly on AWS EKS with GPU support. If you're planning something similar, definitely check out the vLLM documentation and AWS EKS best practices for more insights.
+
+Here's the link for the mistral-7b model that we have deployed on the Jaqpot platform: [mistral-7b](https://app.jaqpot.org/dashboard/models/1994/description)
+
+On part 3 we will fine-tune our LLM using the transformers library provided by Hugging Face, stay tuned!

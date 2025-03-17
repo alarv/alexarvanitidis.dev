@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e92d63a-8c5b-49fe-af18-bbfeed810539" name="Changes" comment="" />
+    <list default="true" id="2e92d63a-8c5b-49fe-af18-bbfeed810539" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/blog/run-and-deploy-an-llm-part1/opengraph-image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/blog/run-and-deploy-an-llm-part1/page.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/blog/run-and-deploy-an-llm-part2/opengraph-image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/blog/run-and-deploy-an-llm-part2/page.mdx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/deploy-llm.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/llama-ui.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/vllm-logo-text-light.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mdx-components.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/mdx-components.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,10 +26,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 5
 }]]></component>
   <component name="ProjectId" id="2uRScFaDwu7icW1EvvxkUmWog6V" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,7 +47,7 @@
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/alex.arvanitidis/Projects/alexarvanitidis.dev/app/blog/the-death-of-boring-docs",
+    "last_opened_file_path": "/Users/alex.arvanitidis/Projects/alexarvanitidis.dev/public",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -40,6 +60,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/app/blog/run-and-deploy-an-llm-part2" />
+      <recent name="$PROJECT_DIR$/app/blog" />
       <recent name="$PROJECT_DIR$/app/blog/the-death-of-boring-docs" />
       <recent name="$PROJECT_DIR$/app" />
     </key>
@@ -60,7 +83,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742209970769</updated>
-      <workItem from="1742209972304" duration="1797000" />
+      <workItem from="1742209972304" duration="3218000" />
     </task>
     <task id="LOCAL-00001" summary="feat: add 2 blogposts">
       <option name="closed" value="true" />
@@ -70,7 +93,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742211566130</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="chore: commit workspace.xml">
+      <option name="closed" value="true" />
+      <created>1742211871016</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1742211871016</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -78,6 +109,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: add 2 blogposts" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add 2 blogposts" />
+    <MESSAGE value="chore: commit workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: commit workspace.xml" />
   </component>
 </project>

@@ -1,0 +1,71 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="400" fill="#1a1a2e" />
+
+    <!-- Grid lines -->
+    <g stroke="#2a2a3e" stroke-width="0.5">
+        <path d="M 0 50 L 800 50" />
+        <path d="M 0 100 L 800 100" />
+        <path d="M 0 150 L 800 150" />
+        <path d="M 0 200 L 800 200" />
+        <path d="M 0 250 L 800 250" />
+        <path d="M 0 300 L 800 300" />
+        <path d="M 0 350 L 800 350" />
+    </g>
+
+    <!-- LLM Model Box -->
+    <g transform="translate(350, 150)">
+        <rect x="-60" y="-40" width="120" height="80" rx="10" fill="#4a90e2" opacity="0.9"/>
+        <text x="0" y="10" font-family="Arial" font-size="16" fill="white" text-anchor="middle">LLM Model</text>
+    </g>
+
+    <!-- Frontend Box -->
+    <g transform="translate(100, 200)">
+        <rect x="-70" y="-30" width="140" height="60" rx="8" fill="#50c878" opacity="0.9"/>
+        <text x="0" y="5" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Next.js Frontend</text>
+    </g>
+
+    <!-- Backend Box -->
+    <g transform="translate(600, 200)">
+        <rect x="-70" y="-30" width="140" height="60" rx="8" fill="#e24a85" opacity="0.9"/>
+        <text x="0" y="5" font-family="Arial" font-size="14" fill="white" text-anchor="middle">FastAPI Backend</text>
+    </g>
+
+    <!-- Streaming Arrows -->
+    <g stroke-width="2" fill="none">
+        <!-- Request Flow -->
+        <path d="M 170 200 C 250 200, 450 180, 530 200" stroke="#50c878" marker-end="url(#arrowhead)">
+            <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite"/>
+        </path>
+        <!-- Response Flow -->
+        <path d="M 530 220 C 450 240, 250 220, 170 220" stroke="#4a90e2" marker-end="url(#arrowhead)">
+            <animate attributeName="stroke-dashoffset" from="100" to="0" dur="1.5s" repeatCount="indefinite"/>
+        </path>
+    </g>
+
+    <!-- Arrowhead Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#fff"/>
+        </marker>
+    </defs>
+
+    <!-- Stream Particles -->
+    <g>
+        <circle cx="250" cy="220" r="2" fill="#4a90e2">
+            <animate attributeName="cx" from="530" to="170" dur="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="350" cy="220" r="2" fill="#4a90e2">
+            <animate attributeName="cx" from="530" to="170" dur="1.5s" begin="0.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="450" cy="220" r="2" fill="#4a90e2">
+            <animate attributeName="cx" from="530" to="170" dur="1.5s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- Title -->
+    <text x="400" y="50" font-family="Arial" font-size="24" fill="white" text-anchor="middle" font-weight="bold">LLM Streaming Architecture</text>
+
+    <!-- Subtitle -->
+    <text x="400" y="80" font-family="Arial" font-size="14" fill="#888" text-anchor="middle">Real-time text generation with bidirectional streaming</text>
+</svg>

@@ -133,6 +133,19 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title: 'Deploy a streaming LLM with Terraform, Kubernetes and vLLM: the complete stack (part 2)',
+    description:
+      'How to deploy an LLM on your own infra with terraform, Kubernetes and vLLM',
+    link: '/blog/run-and-deploy-an-llm-part2',
+    uid: 'run-and-deploy-an-llm-part2',
+  },
+  {
+    title: 'Building a streaming LLM with Next.js, FastAPI & Docker: the complete stack (part 1)',
+    description:
+      'How to build a simple streaming API using Llama',
+    link: '/blog/run-and-deploy-an-llm-part1',
+    uid: 'run-and-deploy-an-llm-part1',
+  },{
     title: 'The death of boring docs',
     description:
       'How frameworks with long documentations have failed',
