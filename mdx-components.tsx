@@ -2,6 +2,7 @@ import { formatDistance } from 'date-fns/formatDistance'
 import type { MDXComponents } from 'mdx/types'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import Claps from '@/app/blog/components/Claps'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -30,6 +31,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return (
         <p title={date.toLocaleDateString()} className='text-gray-500'>Published {formatDistance(date, new Date(), { addSuffix: true })}</p>
       )
+    },
+    Claps:({}) => {
+      return <Claps/>
     },
     code(props) {
       const { children, className, ...rest } = props;
