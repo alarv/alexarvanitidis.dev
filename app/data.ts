@@ -133,6 +133,13 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title: 'The art of the API abstraction',
+    description:
+      'What is an API and how its abstraction is an art',
+    link: '/blog/the-art-of-the-api-abstraction',
+    uid: 'blog/the-art-of-the-api-abstraction',
+  },
+  {
     title: 'Deploy a streaming LLM with Terraform, Kubernetes and vLLM: the complete stack (part 2)',
     description:
       'How to deploy an LLM on your own infra with terraform, Kubernetes and vLLM',
