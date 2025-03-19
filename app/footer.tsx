@@ -77,6 +77,14 @@ export function Footer() {
             Template by{' '}
             <Link href={'https://github.com/ibelick/nim'}> nim</Link>.
           </span>
+          <span>
+            <Link
+              title="terminal icons"
+              href="https://www.flaticon.com/free-icons/terminal"
+            >
+              Terminal icons created by HideMaru - Flaticon
+            </Link>
+          </span>
         </TextLoop>
         <div className="text-xs text-zinc-400">
           <ThemeSwitch />
