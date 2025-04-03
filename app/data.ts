@@ -133,29 +133,36 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: 'The art of the API abstraction',
+    title: "The plant that couldn't bloom\n",
     description:
-      'What is an API and how its abstraction is an art',
+      'There was a time I thought I wasn’t good enough. That I didn’t belong in tech. That I just couldn’t keep up.',
+    link: '/blog/the-plant-that-could-not-bloom',
+    uid: 'blog/the-plant-that-could-not-bloom',
+  },
+  {
+    title: 'The art of the API abstraction',
+    description: 'What is an API and how its abstraction is an art',
     link: '/blog/the-art-of-the-api-abstraction',
     uid: 'blog/the-art-of-the-api-abstraction',
   },
   {
-    title: 'Deploy a streaming LLM with Terraform, Kubernetes and vLLM: the complete stack (part 2)',
+    title:
+      'Deploy a streaming LLM with Terraform, Kubernetes and vLLM: the complete stack (part 2)',
     description:
       'How to deploy an LLM on your own infra with terraform, Kubernetes and vLLM',
     link: '/blog/run-and-deploy-an-llm-part2',
     uid: 'run-and-deploy-an-llm-part2',
   },
   {
-    title: 'Building a streaming LLM with Next.js, FastAPI & Docker: the complete stack (part 1)',
-    description:
-      'How to build a simple streaming API using Llama',
+    title:
+      'Building a streaming LLM with Next.js, FastAPI & Docker: the complete stack (part 1)',
+    description: 'How to build a simple streaming API using Llama',
     link: '/blog/run-and-deploy-an-llm-part1',
     uid: 'run-and-deploy-an-llm-part1',
-  },{
+  },
+  {
     title: 'The death of boring docs',
-    description:
-      'How frameworks with long documentations have failed',
+    description: 'How frameworks with long documentations have failed',
     link: '/blog/the-death-of-boring-docs',
     uid: 'the-death-of-boring-docs',
   },

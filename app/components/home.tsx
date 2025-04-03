@@ -1,7 +1,8 @@
 'use client'
 
 import {
-  MorphingDialog, MorphingDialogClose,
+  MorphingDialog,
+  MorphingDialogClose,
   MorphingDialogContainer,
   MorphingDialogContent,
   MorphingDialogTrigger,
@@ -9,7 +10,13 @@ import {
 import { XIcon } from 'lucide-react'
 import { Magnetic } from '@/components/ui/magnetic'
 import { motion } from 'motion/react'
-import { BLOG_POSTS, EMAIL, PROJECTS, SOCIAL_LINKS, WORK_EXPERIENCE } from '@/app/data'
+import {
+  BLOG_POSTS,
+  EMAIL,
+  PROJECTS,
+  SOCIAL_LINKS,
+  WORK_EXPERIENCE,
+} from '@/app/data'
 import { Spotlight } from '@/components/ui/spotlight'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import Link from 'next/link'
@@ -84,9 +91,9 @@ function ProjectVideo({ src }: ProjectVideoProps) {
 }
 
 function MagneticSocialLink({
-                              children,
-                              link,
-                            }: {
+  children,
+  link,
+}: {
   children: React.ReactNode
   link: string
 }) {
@@ -209,7 +216,9 @@ export default function Home() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-3 text-lg font-medium">Blog</h3>
+        <Link href="/blog">
+          <h3 className="mb-3 text-lg font-medium">Blog</h3>
+        </Link>
         <div className="flex flex-col space-y-0">
           <AnimatedBackground
             enableHover
