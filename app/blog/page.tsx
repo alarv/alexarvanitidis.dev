@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <>
+    <div className="not-prose">
       <h3 className="mb-3 text-lg font-medium">Blog</h3>
       <div className="flex flex-col space-y-0">
         <AnimatedBackground
@@ -27,12 +27,14 @@ export default function Page() {
           {BLOG_POSTS.map((post) => (
             <Link
               key={post.uid}
-              className="rounded-xl p-1 no-underline"
+              className="-mx-3 rounded-xl p-3 no-underline"
               href={post.link}
               data-id={post.uid}
             >
               <div className="flex flex-col space-y-1">
-                <h4 className="font-normal dark:text-zinc-100">{post.title}</h4>
+                <h4 className="my-2 font-normal dark:text-zinc-100">
+                  {post.title}
+                </h4>
                 <p className="text-zinc-500 dark:text-zinc-400">
                   {post.description}
                 </p>
@@ -41,6 +43,6 @@ export default function Page() {
           ))}
         </AnimatedBackground>
       </div>
-    </>
+    </div>
   )
 }
