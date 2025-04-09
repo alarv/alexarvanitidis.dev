@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import Claps from '@/app/blog/components/Claps'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { ArrowLeft } from 'lucide-react'
 
 function CopyButton() {
   const [text, setText] = useState('Copy')
@@ -60,8 +61,9 @@ export default function LayoutBlogPost({
         {isBlogpost(pathname) && (
           <>
             <div className="my-5">
-              <Link href="/blog" className="underline">
-                ← Back to blog
+              <Link href="/blog" className="flex items-center gap-2 underline">
+                <ArrowLeft size={18} /> {/* You can tweak the size here */}
+                Back to blog
               </Link>
             </div>
             <div className="my-5">
