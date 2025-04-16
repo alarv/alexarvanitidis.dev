@@ -18,8 +18,7 @@ import {
   WORK_EXPERIENCE,
 } from '@/app/data'
 import { Spotlight } from '@/components/ui/spotlight'
-import { AnimatedBackground } from '@/components/ui/animated-background'
-import Link from 'next/link'
+import BlogFeed from '@/app/blog/components/BlogFeed'
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -216,38 +215,7 @@ export default function Home() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <Link href="/blog">
-          <h3 className="mb-3 text-lg font-medium">Blog</h3>
-        </Link>
-        <div className="flex flex-col space-y-0">
-          <AnimatedBackground
-            enableHover
-            className="h-full w-full rounded-lg bg-zinc-100 dark:bg-zinc-900/80"
-            transition={{
-              type: 'spring',
-              bounce: 0,
-              duration: 0.2,
-            }}
-          >
-            {BLOG_POSTS.map((post) => (
-              <Link
-                key={post.uid}
-                className="-mx-3 rounded-xl px-3 py-3"
-                href={post.link}
-                data-id={post.uid}
-              >
-                <div className="flex flex-col space-y-1">
-                  <h4 className="font-normal dark:text-zinc-100">
-                    {post.title}
-                  </h4>
-                  <p className="text-zinc-500 dark:text-zinc-400">
-                    {post.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </AnimatedBackground>
-        </div>
+        <BlogFeed page={1} />
       </motion.section>
 
       <motion.section

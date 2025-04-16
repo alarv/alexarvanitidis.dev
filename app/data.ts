@@ -133,7 +133,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: "Decisions. Decisions. Decisions",
+    title: 'Decisions. Decisions. Decisions',
     description:
       'How the impact of decisions at the right time is important for a fast-moving startup',
     link: '/blog/decisions-decisions-decisions',

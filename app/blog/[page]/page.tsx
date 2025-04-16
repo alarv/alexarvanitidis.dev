@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { redirect } from 'next/navigation'
+import BlogFeed from '@/app/blog/components/BlogFeed'
 
 export const metadata: Metadata = {
   title:
@@ -8,6 +8,13 @@ export const metadata: Metadata = {
     'Personal blog by Alex Arvanitidis, sharing insights on machine learning, software engineering, web development, and personal growth. Follow along for tutorials, thoughts on tech trends, and behind-the-scenes on building Jaqpot and other projects.',
 }
 
-export default function Page() {
-  redirect(`/blog/1`)
+export default function Page({ params }: { params: { page: string } }) {
+  const { page } = params
+  const pageNum = parseInt(page as string, 10)
+
+  return (
+    <div className="not-prose">
+      <BlogFeed page={pageNum} />
+    </div>
+  )
 }
