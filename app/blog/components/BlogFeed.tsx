@@ -6,7 +6,6 @@ import Link from 'next/link'
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -40,9 +39,9 @@ export default function BlogFeed({ page }: BlogFeedProps) {
                   bounce: 0,
                   duration: 0.2,
                 }}
+                key={post.uid}
               >
                 <Link
-                  key={post.uid}
                   className="-mx-3 rounded-xl p-3 no-underline"
                   href={post.link}
                   data-id={post.uid}

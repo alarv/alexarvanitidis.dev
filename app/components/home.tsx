@@ -10,13 +10,7 @@ import {
 import { XIcon } from 'lucide-react'
 import { Magnetic } from '@/components/ui/magnetic'
 import { motion } from 'motion/react'
-import {
-  BLOG_POSTS,
-  EMAIL,
-  PROJECTS,
-  SOCIAL_LINKS,
-  WORK_EXPERIENCE,
-} from '@/app/data'
+import { EMAIL, PROJECTS, SOCIAL_LINKS, WORK_EXPERIENCE } from '@/app/data'
 import { Spotlight } from '@/components/ui/spotlight'
 import BlogFeed from '@/app/blog/components/BlogFeed'
 

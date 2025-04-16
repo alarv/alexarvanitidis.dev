@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { HandThumbUpIcon, HeartIcon } from '@heroicons/react/24/solid'
+import { HeartIcon } from '@heroicons/react/24/solid'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import useSWR from 'swr'
