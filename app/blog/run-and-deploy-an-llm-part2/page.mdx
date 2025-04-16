@@ -1,19 +1,17 @@
 export const metadata = {
-  title: 'Deploy a streaming LLM with Terraform, Kubernetes and vLLM: the complete stack (part 2) | | Alex Arvanitidis\'s Blog',
-  description: 'how we deployed our LLM workload into production using AWS, Terraform, and Kubernetes with GPU support. Let\'s dive into the infrastructure setup that made this possible!'
-};
+  title:
+    "Deploy a streaming LLM with Terraform, Kubernetes and vLLM: the complete stack (part 2) | | Alex Arvanitidis's Blog",
+  description:
+    "how we deployed our LLM workload into production using AWS, Terraform, and Kubernetes with GPU support. Let's dive into the infrastructure setup that made this possible!",
+}
 
 export const revalidate = 3600 * 24
 
 # Deploy a streaming LLM with Terraform, Kubernetes and vLLM: the complete stack (part 2)
 
-<PublishedOn date={new Date(2024,11,15)}/>
+<PublishedOn date={new Date(2024, 11, 15)} />
 
-<Cover
-  src="/vllm-logo-text-light.png"
-  alt=""
-  caption=""
-/>
+<Cover src="/vllm-logo-text-light.png" alt="" caption="" />
 
 As promised in [part 1](/blog/run-and-deploy-an-llm-part1), here's how we deployed our LLM workload into production using AWS, Terraform, and Kubernetes with GPU support. Let's dive into the infrastructure setup that made this possible!
 
@@ -63,21 +61,21 @@ This configuration ensures our GPU workloads get their own dedicated nodes - no 
 Next, we made sure our LLM gets priority access to those GPU resources. Here's how we configured our helm values:
 
 ```yaml
-  resources:
-    limits:
-      nvidia.com/gpu: 1
-      cpu: "8000m"
-      memory: "32Gi"
-    requests:
-      nvidia.com/gpu: 1
-      cpu: "6000m"
-      memory: "30Gi"
-  nodeSelector:
-    workload-type: gpu
-  tolerations:
-    - key: nvidia.com/gpu
-      operator: Exists
-      effect: NoSchedule
+resources:
+  limits:
+    nvidia.com/gpu: 1
+    cpu: '8000m'
+    memory: '32Gi'
+  requests:
+    nvidia.com/gpu: 1
+    cpu: '6000m'
+    memory: '30Gi'
+nodeSelector:
+  workload-type: gpu
+tolerations:
+  - key: nvidia.com/gpu
+    operator: Exists
+    effect: NoSchedule
 ```
 
 ## Our LLM container setup
@@ -93,28 +91,33 @@ spec:
   template:
     spec:
       containers:
-      - name: llm
-        image: ghcr.io/vllm-project/vllm:latest
-        command: [
-          "vllm",
-          "serve",
-          "mistralai/Mistral-7B-Instruct-v0.3",
-          "--trust-remote-code",
-          "--enable-chunked-prefill",
-          "--max_num_batched_tokens", "1024",
-          "--dtype=half",
-          "--tokenizer-mode", "mistral",
-          "--gpu-memory-utilization", "1.0",
-          "--max-model-len", "6944",
-          "--enforce-eager"
-        ]
-        volumeMounts:
-        - name: model-storage
-          mountPath: /models
+        - name: llm
+          image: ghcr.io/vllm-project/vllm:latest
+          command:
+            [
+              'vllm',
+              'serve',
+              'mistralai/Mistral-7B-Instruct-v0.3',
+              '--trust-remote-code',
+              '--enable-chunked-prefill',
+              '--max_num_batched_tokens',
+              '1024',
+              '--dtype=half',
+              '--tokenizer-mode',
+              'mistral',
+              '--gpu-memory-utilization',
+              '1.0',
+              '--max-model-len',
+              '6944',
+              '--enforce-eager',
+            ]
+          volumeMounts:
+            - name: model-storage
+              mountPath: /models
       volumes:
-      - name: model-storage
-        persistentVolumeClaim:
-          claimName: llm-model-storage
+        - name: model-storage
+          persistentVolumeClaim:
+            claimName: llm-model-storage
 ```
 
 Depending on your hardware, you may have to twiddle a bit with the vllm arguments. I got very helpful warning messages from vLLM each time and searching their issues on GitHub I found a solution each time!
@@ -144,12 +147,14 @@ spec:
 ## The grand finale: Deployment time!
 
 Here's how we orchestrated everything (drumroll, please 🥁):
+
 1. First, we let Terraform work its infrastructure magic with the GPU nodes
 2. Then, we waited for our new nodes to be ready
 3. Next, we created the persistent volume claim
 4. Finally, we deployed our LLM service
 
 Some key things we monitor:
+
 - GPU utilization tracking through Prometheus/Grafana
 - Autoscaling based on our GPU metrics
 - Comprehensive logging and monitoring

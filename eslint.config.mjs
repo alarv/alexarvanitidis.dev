@@ -1,20 +1,20 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+import { FlatCompat } from '@eslint/eslintrc'
 import * as mdx from 'eslint-plugin-mdx'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-});
+})
 
 const eslintConfig = [
   ...compat.extends(
-    "next/core-web-vitals",
-    "next/typescript",
-    "plugin:prettier/recommended",
+    'next/core-web-vitals',
+    'next/typescript',
+    'plugin:prettier/recommended',
   ),
   {
     ...mdx.flat,
@@ -25,7 +25,7 @@ const eslintConfig = [
       // if you want to override the default language mapper inside, you can provide your own
       languageMapper: {},
     }),
-  }
-];
+  },
+]
 
-export default eslintConfig;
+export default eslintConfig

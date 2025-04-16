@@ -1,19 +1,15 @@
 export const metadata = {
-  title: 'The art of API abstraction | | Alex Arvanitidis\'s Blog',
-  description: 'How to abstract an API so the consumers understand it.'
-};
+  title: "The art of API abstraction | | Alex Arvanitidis's Blog",
+  description: 'How to abstract an API so the consumers understand it.',
+}
 
 export const revalidate = 3600 * 24
 
 # The art of API abstraction
 
-<PublishedOn date={new Date(2025,2,18)}/>
+<PublishedOn date={new Date(2025, 2, 18)} />
 
-<Cover
-  src="/api.png"
-  alt=""
-  caption=""
-/>
+<Cover src="/api.png" alt="" caption="" />
 
 ## What is an API? (Explain like I’m 5 version)
 
@@ -31,7 +27,6 @@ APIs exist beyond code. Here are a few examples:
 - **Making coffee** → A **coffee machine** is a black box. You press a button, and it does everything for you.
 - **Restaurants** → A **menu** is an API for ordering food. You don’t need to know how the chef cooks it.
 - **iPhone vs. Android** → Apple’s iPhone has a **single button** (or none now), abstracting most functionality away. Android, on the other hand, kept the **three-button navigation**—especially the back button, which gives users more control. Both are APIs, but they strike different balances between abstraction and usability.
-
 
 The best APIs, in code or in life, simplify complexity. But abstraction is a double-edged sword: **abstract too much, and users lose control; abstract too little, and it becomes too complicated.**
 
@@ -84,31 +79,37 @@ Before designing an API, ask yourself:
 Here are some guidelines I follow whenever I design an API:
 
 ### 1. Be a master of your domain
+
 You **cannot** build a good API if you don’t deeply understand the domain it serves. Abstractions only make sense when designed by someone who knows what **should** and **shouldn’t** be exposed. Learn the **pain points** of your users before trying to simplify things for them.
 
 ### 2. Abstract the right things
+
 Not everything should be abstracted. If you hide too much, you strip away control and flexibility. If you abstract too little, users end up writing hacks to make things work.
 
 - **Example:** Allow customization, but within constraints.
-- **Golden Rule:** *Never trust the user.* If they can break your API, they will. Guardrail them into doing the right thing.
+- **Golden Rule:** _Never trust the user._ If they can break your API, they will. Guardrail them into doing the right thing.
 
 ### 3. Don’t make it too easy
+
 A common mistake is **over-simplifying** an API to the point where users don’t need to understand it. This leads to **lazy usage** and bad implementation practices.
 
 - **Make users go through your documentation.** They should understand how and why your API works.
 - **Do not enforce shortcuts that promote misuse.** If someone uses your API **wrong**, the blame is on your design.
 
 ### 4. Users will do whatever works for them
+
 Users don’t always care about **efficiency** or **best practices**—they care about **what works**.
 
 - I once worked with people who **clean installed our entire project** every time they needed to rebuild it. It took **5 minutes** instead of manually changing a file, which would take **5 seconds**.
 - Why?
+
 1. **Because they were lazy.**
 2. **Because they feared the other way might break things.**
 
 Your API should guide users toward the **right way**, because left unchecked, they will **default to whatever is easiest for them**.
 
 ### 5. Make things easy, but not too easy
+
 Users don’t want to know how your API works under the hood. They **expect it to work**.
 
 - A car has a **steering wheel** instead of individual controls for each tire.
@@ -117,9 +118,9 @@ Users don’t want to know how your API works under the hood. They **expect it t
 APIs should follow the same principle—**hide complexity, but don’t strip away control.**
 
 ### The Balance of API Design
+
 A good API is a **well-designed black box**—you know what it does, you trust how it works, and you don’t need to open it.
 
 Just like a vending machine, a car’s controls, or a coffee machine, the best APIs are **useful black boxes**—they just work.
 
 And abstracting the right things on an API is an art.
-

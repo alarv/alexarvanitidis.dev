@@ -1,7 +1,7 @@
 import { formatDistance } from 'date-fns/formatDistance'
 import type { MDXComponents } from 'mdx/types'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { materialDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import Claps from '@/app/blog/components/Claps'
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -23,21 +23,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </figure>
       )
     },
-    PublishedOn: ({
-      date
-    }: {
-      date: Date
-    }) => {
+    PublishedOn: ({ date }: { date: Date }) => {
       return (
-        <p title={date.toLocaleDateString()} className='text-gray-500'>Published {formatDistance(date, new Date(), { addSuffix: true })}</p>
+        <p title={date.toLocaleDateString()} className="text-gray-500">
+          Published {formatDistance(date, new Date(), { addSuffix: true })}
+        </p>
       )
     },
-    Claps:({}) => {
-      return <Claps/>
+    Claps: ({}) => {
+      return <Claps />
     },
     code(props) {
-      const { children, className, ...rest } = props;
-      const match = /language-(\w+)/.exec(className || '');
+      const { children, className, ...rest } = props
+      const match = /language-(\w+)/.exec(className || '')
       return match ? (
         <SyntaxHighlighter
           PreTag="div"
@@ -55,7 +53,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <code {...rest} className={className}>
           {children}
         </code>
-      );
+      )
     },
   }
 }

@@ -1,49 +1,49 @@
-'use client';
+'use client'
 
-import { Button } from '@/components/ui/button';
-import { HandThumbUpIcon, HeartIcon } from '@heroicons/react/24/solid';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
-import useSWR from 'swr';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button'
+import { HandThumbUpIcon, HeartIcon } from '@heroicons/react/24/solid'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import useSWR from 'swr'
+import { motion, AnimatePresence } from 'framer-motion'
 
 async function incrementClaps(url: string) {
   const res = await fetch('/api/claps', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ url }),
-  });
-  return await res.json();
+  })
+  return await res.json()
 }
 
 export default function Claps() {
-  const pathname = usePathname();
-  const [claps, setClaps] = useState(0);
-  const [hasBeenClicked, setHasBeenClicked] = useState(false);
-  const [hearts, setHearts] = useState<number[]>([]);
+  const pathname = usePathname()
+  const [claps, setClaps] = useState(0)
+  const [hasBeenClicked, setHasBeenClicked] = useState(false)
+  const [hearts, setHearts] = useState<number[]>([])
 
   useSWR(`/api/claps?url=${pathname}`, async (url: string) => {
-    const res = await fetch(url);
-    const data = await res.json();
-    setClaps(data.claps);
-    return data;
-  });
+    const res = await fetch(url)
+    const data = await res.json()
+    setClaps(data.claps)
+    return data
+  })
 
   const handleClick = () => {
-    setClaps(claps + 1);
-    setHasBeenClicked(true);
-    incrementClaps(pathname);
+    setClaps(claps + 1)
+    setHasBeenClicked(true)
+    incrementClaps(pathname)
 
     // Add a new heart with a unique key
-    setHearts((prev) => [...prev, Date.now()]);
-  };
+    setHearts((prev) => [...prev, Date.now()])
+  }
 
   return (
-    <div className="relative flex justify-center items-center w-20 h-20">
+    <div className="relative flex h-20 w-20 items-center justify-center">
       <Button
         variant="secondary"
         onClick={handleClick}
-        size='lg'
+        size="lg"
         className="relative"
       >
         <motion.div
@@ -75,5 +75,5 @@ export default function Claps() {
         ))}
       </AnimatePresence>
     </div>
-  );
+  )
 }

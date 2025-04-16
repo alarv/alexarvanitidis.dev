@@ -1,20 +1,16 @@
-
 export const metadata = {
-  title: 'Run and deploy an LLM (part 1) | | Alex Arvanitidis\'s Blog',
-  description: 'Want to build a modern LLM application with real-time streaming responses? Here\'s a complete guide covering backend, frontend, and deployment. We\'ll be using some of the most popular technologies in the modern web development ecosystem: Next.js with the Next UI component library, FastAPI for our backend, and Docker for containerization.'
-};
+  title: "Run and deploy an LLM (part 1) | | Alex Arvanitidis's Blog",
+  description:
+    "Want to build a modern LLM application with real-time streaming responses? Here's a complete guide covering backend, frontend, and deployment. We'll be using some of the most popular technologies in the modern web development ecosystem: Next.js with the Next UI component library, FastAPI for our backend, and Docker for containerization.",
+}
 
 export const revalidate = 3600 * 24
 
 # Run and deploy an LLM (part 1)
 
-<PublishedOn date={new Date(2024,10,15)}/>
+<PublishedOn date={new Date(2024, 10, 15)} />
 
-<Cover
-  src="/deploy-llm.svg"
-  alt=""
-  caption=""
-/>
+<Cover src="/deploy-llm.svg" alt="" caption="" />
 
 Want to build a modern LLM application with real-time streaming responses? Here's a complete guide covering backend, frontend, and deployment. We'll be using some of the most popular technologies in the modern web development ecosystem: Next.js with the Next UI component library, FastAPI for our backend, and Docker for containerization.
 
@@ -26,6 +22,7 @@ LLaMA, like other language models, creates text one piece at a time. Here's how 
 When you type a question or prompt, LLaMA processes it token by token. A token is basically a piece of text - it could be a word, part of a word, or even a single character. The model looks at all the tokens you've given it and predicts what should come next.
 
 For example, if you write "The cat 🐈 sat on the", LLaMA will:
+
 1. Read your input
 2. Predict the next most likely token (maybe "mat")
 3. Add "mat" to your input
@@ -55,12 +52,14 @@ python convert_llama_weights_to_hf.py \
 ```
 
 Let's break down what's happening:
+
 - `--input_dir`: points to where your original Llama weights are stored
 - `--model_size`: specifies the model size (1B in our case)
 - `--output_dir`: where the converted weights will be saved
 - `--llama_version`: specifies which version of Llama we're using
 
 The conversion process creates a model that's compatible with the transformers library's LlamaForCausalLM architecture. This enables us to use all the powerful features of the transformers library, including:
+
 - Efficient tokenization
 - Model parallelism
 - Gradient checkpointing
@@ -178,6 +177,7 @@ if __name__ == "__main__":
 ```
 
 This FastAPI application:
+
 - uses FastAPI's lifespan management to initialize our model service when the app starts
 - provides an `/infer` endpoint that accepts prediction requests and returns streaming responses
 - includes a health check endpoint for monitoring
@@ -193,6 +193,7 @@ Our frontend is built with Next.js and the Next UI component library, providing 
 We'll break down our frontend into two main components:
 
 ### Navigation component
+
 ```typescript
 export default function LLMNavigation() {
   const [conversations, setConversations] = useState<string[]>([]);
@@ -227,6 +228,7 @@ export default function LLMNavigation() {
 The navigation component manages chat history and session navigation. It uses Next UI's Table and Button components for a polished look.
 
 ### Chat form component
+
 ```typescript
 export function ChatForm() {
   const [isLoading, setIsLoading] = useState(false);
@@ -316,6 +318,7 @@ export function ChatForm() {
 ```
 
 The chat form component is where the magic happens. It:
+
 - Manages the chat interface using Next UI components (Card, Button, Textarea)
 - Handles real-time streaming using the web streams API
 - Maintains chat history and UI state
@@ -324,6 +327,7 @@ The chat form component is where the magic happens. It:
 - Supports keyboard shortcuts for better usability
 
 Key features of our frontend implementation:
+
 - Real-time streaming using the web streams API
 - Responsive design with Next UI components
 - Chat history management with state persistence
@@ -341,9 +345,11 @@ After doing all this we end up with a UI looking like this image:
 Let's look at containerizing our model service. We'll explore two approaches: a multi-stage build that includes training, and our current production setup with pre-trained models.
 
 ### Approach 1: Multi-stage build (work in progress)
+
 Here's a multi-stage Dockerfile that attempts to include the training process:
 
 Here's the training code `train.py`
+
 ```python
 import joblib
 import torch
@@ -362,6 +368,7 @@ joblib.dump(tokenizer, 'tokenizer.pkl')
 ```
 
 and the Dockerfile:
+
 ```dockerfile
 # Training stage
 FROM python:3.10 AS trainer
@@ -402,11 +409,13 @@ However, training during the Docker build process proved challenging due to memo
 Instead, we perform the training offline using the `train.py` script and we move on to the 2nd approach for now.
 
 This script:
+
 - loads the converted Llama model and tokenizer
 - moves the model to CPU for compatibility
 - saves both as pickle files for easy loading in our service
 
 ### Approach 2: Production setup
+
 For production, we use a simpler Dockerfile that focuses on deployment:
 
 ```dockerfile
@@ -428,6 +437,7 @@ CMD ["python", "-m", "main", "--port", "8005"]
 ```
 
 This production Dockerfile:
+
 - uses Python 3.10 base image
 - sets up a clean working directory
 - installs requirements first for better caching
@@ -435,6 +445,7 @@ This production Dockerfile:
 - runs our FastAPI service on port 8005
 
 Next steps:
+
 1. Run the training script locally to generate model files
 2. Build your docker image: `docker build -t llm-service .`
 3. Set up your Next.js frontend
