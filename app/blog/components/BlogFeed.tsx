@@ -24,7 +24,7 @@ export default function BlogFeed({ page }: BlogFeedProps) {
 
   return (
     <>
-      <Link href="/blog">
+      <Link href="/blog/1">
         <h3 className="mb-3 text-lg font-medium">Blog</h3>
       </Link>
       <div className="flex flex-col space-y-0">
