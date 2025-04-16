@@ -1,7 +1,7 @@
 'use client'
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { TextLoop } from '@/components/ui/text-loop'
-import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
+import { GithubIcon, MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -87,6 +87,18 @@ export function Footer() {
           </span>
         </TextLoop>
         <div className="text-xs text-zinc-400">
+          <Link
+            href="https://github.com/alarv/alexarvanitidis.dev"
+            target="_blank"
+          >
+            <button
+              className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
+              type="button"
+              aria-label={`Github source code`}
+            >
+              <GithubIcon className="h-4 w-4" />
+            </button>
+          </Link>
           <ThemeSwitch />
         </div>
       </div>
