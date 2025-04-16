@@ -133,7 +133,14 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: "The plant that couldn't bloom\n",
+    title: "Decisions. Decisions. Decisions",
+    description:
+      'How the impact of decisions at the right time is important for a fast-moving startup',
+    link: '/blog/decisions-decisions-decisions',
+    uid: 'blog/decisions-decisions-decisions',
+  },
+  {
+    title: "The plant that couldn't bloom",
     description:
       'There was a time I thought I wasn’t good enough. That I didn’t belong in tech. That I just couldn’t keep up.',
     link: '/blog/the-plant-that-could-not-bloom',
