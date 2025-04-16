@@ -63,7 +63,10 @@ export default function LayoutBlogPost({
         {isBlogpost(pathname) && (
           <>
             <div className="my-5">
-              <Link href="/blog" className="flex items-center gap-2 underline">
+              <Link
+                href="/blog/1"
+                className="flex items-center gap-2 underline"
+              >
                 <ArrowLeft size={18} /> {/* You can tweak the size here */}
                 Back to blog
               </Link>
