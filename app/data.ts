@@ -133,8 +133,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title:
-      'I did a deep dive into AI to understand the future of AI itself (Yes, AIception)',
+    title: 'I asked AI about the future of AI (Yes, AI-ception)',
     description:
       'I wanted to know: where is AI going in the next 10+ years? Is diving deeper into large language models (LLMs) in 2025 still a good bet for developers like me? What jobs will rise? What skills will matter?',
     link: '/blog/ai-job-trends-2035-aiception',
