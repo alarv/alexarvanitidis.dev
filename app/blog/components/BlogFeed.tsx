@@ -47,7 +47,7 @@ export default function BlogFeed({ page }: BlogFeedProps) {
                   data-id={post.uid}
                 >
                   <div className="flex flex-col space-y-1">
-                    <h4 className="my-2 font-normal dark:text-zinc-100">
+                    <h4 className="my-2 font-medium font-semibold dark:text-zinc-100">
                       {post.title}
                     </h4>
                     <p className="text-zinc-500 dark:text-zinc-400">
