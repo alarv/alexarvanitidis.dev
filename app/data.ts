@@ -133,6 +133,13 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title: 'My experience with arrogant developers',
+    description:
+      'A reflection on developer culture, code consistency, and the damage caused by ego-driven decisions in software teams.',
+    link: '/blog/my-experience-with-arrogant-developers',
+    uid: 'blog/my-experience-with-arrogant-developers',
+  },
+  {
     title: 'The luxury of letting ideas marinate',
     description:
       'This post explores the power of letting ideas sit. It reflects on how having time, space, and a clear mind can lead to better solutions — especially in engineering and research. It contrasts rushed patches with well-thought-out fixes that emerge when pressure is low and the mind is calm.',
