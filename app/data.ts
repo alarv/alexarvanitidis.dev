@@ -133,6 +133,13 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title: "Coding with Claude and LLMs: What I've Learned After 3 Months",
+    description:
+      'Reflections on working daily with Claude Code and LLMs for three months, the benefits of full repo context, and why experience still matters.',
+    link: '/blog/coding-with-claude-and-llms-what-ive-learned-after-3-months',
+    uid: 'blog/coding-with-claude-and-llms-what-ive-learned-after-3-months',
+  },
+  {
     title: 'My experience with arrogant developers',
     description:
       'A reflection on developer culture, code consistency, and the damage caused by ego-driven decisions in software teams.',
