@@ -55,6 +55,15 @@ export const PROJECTS: Project[] = [
       'https://res.cloudinary.com/dofjdeyrh/video/upload/v1753191776/readon_pwnaja.mp4',
     link: 'https://readon.gr',
   },
+  {
+    id: 'geras',
+    name: 'Geras',
+    description:
+      'A silly little game I developed with Phaser 3 during the Covid19 quarantine.',
+    video:
+      'https://res.cloudinary.com/dofjdeyrh/video/upload/v1753191994/geras_dp0cou.mp4',
+    link: 'https://readon.gr',
+  },
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
