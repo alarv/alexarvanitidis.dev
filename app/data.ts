@@ -46,6 +46,15 @@ export const PROJECTS: Project[] = [
       'https://res.cloudinary.com/dofjdeyrh/video/upload/v1742208147/jaqpot_iehfis.mp4',
     link: 'https://jaqpot.org',
   },
+  {
+    id: 'readon',
+    name: 'Readon.gr',
+    description:
+      'A Greek social platform for open discussion, community building, and content sharing through posts, comments, and voting.',
+    video:
+      'https://res.cloudinary.com/dofjdeyrh/video/upload/v1753191776/readon_pwnaja.mp4',
+    link: 'https://readon.gr',
+  },
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
