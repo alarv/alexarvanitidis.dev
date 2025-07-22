@@ -64,6 +64,15 @@ export const PROJECTS: Project[] = [
       'https://res.cloudinary.com/dofjdeyrh/video/upload/v1753191994/geras_dp0cou.mp4',
     link: 'https://readon.gr',
   },
+  {
+    id: 'winnie',
+    name: 'Winnie',
+    description:
+      'A Command Line Interface (CLI) consuming an actively written-to CLF HTTP access log written with Node.js',
+    video:
+      'https://res.cloudinary.com/dofjdeyrh/video/upload/v1753196650/winnielog_-_HD_1080p_c2nrtr.mov',
+    link: 'https://github.com/alarv/winnie',
+  },
 ]
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
