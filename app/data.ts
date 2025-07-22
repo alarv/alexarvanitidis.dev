@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
       'A silly little game I developed with Phaser 3 during the Covid19 quarantine.',
     video:
       'https://res.cloudinary.com/dofjdeyrh/video/upload/v1753191994/geras_dp0cou.mp4',
-    link: 'https://readon.gr',
+    link: 'https://alarv.github.io',
   },
   {
     id: 'winnie',
