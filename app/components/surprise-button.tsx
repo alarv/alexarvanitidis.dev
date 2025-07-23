@@ -137,14 +137,14 @@ export default function SurpriseButton() {
     setIsActive(true)
     const effectIndex = Math.floor(Math.random() * surpriseEffects.length)
     const effectNames = ['upside_down_flip', 'golden_confetti', 'color_chaos']
-    
+
     // Track the analytics event
     track('surprise_button_clicked', {
       effect: effectNames[effectIndex],
       scroll_position: window.scrollY,
-      viewport_height: window.innerHeight
+      viewport_height: window.innerHeight,
     })
-    
+
     const randomEffect = surpriseEffects[effectIndex]
     randomEffect()
 
