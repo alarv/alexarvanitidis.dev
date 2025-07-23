@@ -101,7 +101,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     company: 'Gigabank',
     start: 'Jul 2022',
     end: 'Feb 2023',
-    link: 'https://gigabank.jp',
+    link: 'https://play.google.com/store/apps/details?id=jp.gigabank.app&hl=en',
     image: '/companies/gigabank_logo.jpeg',
   },
   {
