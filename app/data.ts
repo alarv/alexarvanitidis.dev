@@ -13,6 +13,7 @@ type WorkExperience = {
   end: string
   link: string
   id: string
+  image: string
 }
 
 type BlogPost = {
@@ -83,6 +84,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: 'Feb 2024',
     end: 'Present',
     link: 'https://jaqpot.org',
+    image: '/companies/ntua-logo.webp',
   },
   {
     id: 'mercedes',
@@ -91,6 +93,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: 'Feb 2023',
     end: 'Feb 2024',
     link: 'https://www.mercedes-benz.io/',
+    image: '/companies/mbio.jpg',
   },
   {
     id: 'gigabank',
@@ -99,6 +102,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: 'Jul 2022',
     end: 'Feb 2023',
     link: 'https://gigabank.jp',
+    image: '/companies/gigabank_logo.jpeg',
   },
   {
     id: 'impala',
@@ -107,6 +111,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: 'Mar 2021',
     end: 'Jun 2022',
     link: 'https://impala.travel/',
+    image: '/companies/impala-logo.jpeg',
   },
   {
     id: 'glovo',
@@ -115,6 +120,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: 'Feb 2020',
     end: 'Feb 2021',
     link: 'https://glovoapp.com',
+    image: '/companies/glovo.png',
   },
   {
     id: 'telefonica',
@@ -123,6 +129,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: 'Nov 2018',
     end: 'Feb 2020',
     link: 'https://perspectives.health/',
+    image: '/companies/alpha-innovation.jpg',
   },
   {
     id: 'marfeel',
@@ -131,6 +138,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: 'Apr 2016',
     end: 'Nov 2018',
     link: 'https://marfeel.com',
+    image: '/companies/marfeel.png',
   },
   {
     id: 'cern',
@@ -139,6 +147,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: 'Jun 2014',
     end: 'Sep 2014',
     link: 'https://cern.ch',
+    image: '/companies/CERN_logo.jpg',
   },
   {
     id: 'eurodyn',
@@ -147,6 +156,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: 'Apr 2014',
     end: 'Apr 2016',
     link: 'https://eurodyn.com',
+    image: '/companies/eurodyn.png',
   },
   {
     id: 'sapila',
@@ -155,6 +165,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
     start: '2014',
     end: '2020',
     link: 'https://sapila.gr',
+    image: '/companies/sapila-logo.png',
   },
 ]
 
@@ -243,4 +254,4 @@ export const SOCIAL_LINKS: SocialLink[] = [
   { label: 'LinkedIn', link: 'https://www.linkedin.com/in/alexarvanitidis/' },
 ]
 
-export const EMAIL = 'alarvfm@gmail.com'
+export const EMAIL = 'alex.arvanitidis0@gmail.com'

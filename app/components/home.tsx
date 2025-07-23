@@ -186,14 +186,21 @@ export default function Home() {
                 size={64}
               />
               <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between">
-                  <div>
-                    <h4 className="font-normal dark:text-zinc-100">
-                      {job.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {job.company}
-                    </p>
+                <div className="relative flex w-full flex-row justify-between items-center">
+                  <div className="flex items-center space-x-3">
+                    <img 
+                      src={job.image} 
+                      alt={`${job.company} logo`}
+                      className="h-10 w-10 rounded-lg object-contain"
+                    />
+                    <div>
+                      <h4 className="font-normal dark:text-zinc-100">
+                        {job.title}
+                      </h4>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        {job.company}
+                      </p>
+                    </div>
                   </div>
                   <p className="text-zinc-600 dark:text-zinc-400">
                     {job.start} - {job.end}
