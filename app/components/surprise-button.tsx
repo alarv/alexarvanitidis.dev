@@ -251,6 +251,20 @@ export default function SurpriseButton() {
 
     // Effect 7: Sepia/Film Grain
     () => {
+      // Create sepia overlay that covers entire viewport
+      const sepiaOverlay = document.createElement('div')
+      sepiaOverlay.style.position = 'fixed'
+      sepiaOverlay.style.top = '0'
+      sepiaOverlay.style.left = '0'
+      sepiaOverlay.style.width = '100vw'
+      sepiaOverlay.style.height = '100vh'
+      sepiaOverlay.style.backgroundColor = 'rgba(181, 140, 63, 0.4)'
+      sepiaOverlay.style.mixBlendMode = 'multiply'
+      sepiaOverlay.style.pointerEvents = 'none'
+      sepiaOverlay.style.zIndex = '9997'
+      sepiaOverlay.style.opacity = '0'
+      sepiaOverlay.style.transition = `opacity ${PHI * 0.5}s ease`
+
       // Create grain overlay
       const grain = document.createElement('div')
       grain.style.position = 'fixed'
@@ -259,14 +273,16 @@ export default function SurpriseButton() {
       grain.style.width = '100vw'
       grain.style.height = '100vh'
       grain.style.background = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`
-      grain.style.opacity = '0.3'
+      grain.style.opacity = '0.6'
       grain.style.pointerEvents = 'none'
       grain.style.zIndex = '9998'
       grain.style.animation = 'grain 0.2s steps(10) infinite'
 
-      // Add sepia filter to body
-      document.body.style.transition = `filter ${PHI}s ease`
-      document.body.style.filter = 'sepia(0.8) contrast(1.2)'
+      // Add additional sepia filter to html element for better coverage
+      const htmlElement = document.documentElement
+      const originalFilter = htmlElement.style.filter || ''
+      htmlElement.style.transition = `filter ${PHI}s ease`
+      htmlElement.style.filter = 'sepia(1) contrast(1.3) saturate(0.8) brightness(1.1)'
 
       // Add grain animation keyframes
       const style = document.createElement('style')
@@ -285,15 +301,26 @@ export default function SurpriseButton() {
         }
       `
       document.head.appendChild(style)
+      
+      document.body.appendChild(sepiaOverlay)
       document.body.appendChild(grain)
 
+      // Fade in the sepia overlay
       setTimeout(() => {
-        document.body.style.filter = ''
-        grain.remove()
-        style.remove()
+        sepiaOverlay.style.opacity = '1'
+      }, 100)
+
+      setTimeout(() => {
+        // Fade out
+        sepiaOverlay.style.opacity = '0'
+        htmlElement.style.filter = originalFilter
+        
         setTimeout(() => {
-          document.body.style.transition = ''
-        }, PHI * 1000)
+          sepiaOverlay.remove()
+          grain.remove()
+          style.remove()
+          htmlElement.style.transition = ''
+        }, PHI * 500)
       }, PHI * 2500)
     },
 
@@ -480,6 +507,105 @@ export default function SurpriseButton() {
         )
       }
     },
+
+    // Effect 13: Clippy Helper
+    () => {
+      // Create Clippy container
+      const clippyContainer = document.createElement('div')
+      clippyContainer.style.position = 'fixed'
+      clippyContainer.style.bottom = '20px'
+      clippyContainer.style.right = '20px'
+      clippyContainer.style.zIndex = '9999'
+      clippyContainer.style.pointerEvents = 'none'
+
+      // Create Clippy image
+      const clippy = document.createElement('img')
+      clippy.src = '/clippy.png'
+      clippy.style.width = '80px'
+      clippy.style.height = 'auto'
+      clippy.style.display = 'block'
+      clippy.style.animation = 'clippyBounce 2s ease-in-out infinite'
+
+      // Create speech bubble
+      const speechBubble = document.createElement('div')
+      speechBubble.textContent = 'Hi, do you need help?'
+      speechBubble.style.position = 'absolute'
+      speechBubble.style.bottom = '85px'
+      speechBubble.style.right = '10px'
+      speechBubble.style.backgroundColor = '#ffffff'
+      speechBubble.style.border = '2px solid #000000'
+      speechBubble.style.borderRadius = '8px'
+      speechBubble.style.padding = '8px 12px'
+      speechBubble.style.fontSize = '14px'
+      speechBubble.style.fontFamily = 'Arial, sans-serif'
+      speechBubble.style.whiteSpace = 'nowrap'
+      speechBubble.style.boxShadow = '2px 2px 4px rgba(0,0,0,0.3)'
+      speechBubble.style.animation = 'fadeInUp 0.5s ease-out'
+
+      // Create speech bubble tail
+      const bubbleTail = document.createElement('div')
+      bubbleTail.style.position = 'absolute'
+      bubbleTail.style.bottom = '-8px'
+      bubbleTail.style.right = '25px'
+      bubbleTail.style.width = '0'
+      bubbleTail.style.height = '0'
+      bubbleTail.style.borderLeft = '8px solid transparent'
+      bubbleTail.style.borderRight = '8px solid transparent'
+      bubbleTail.style.borderTop = '8px solid #000000'
+
+      const bubbleTailInner = document.createElement('div')
+      bubbleTailInner.style.position = 'absolute'
+      bubbleTailInner.style.bottom = '1px'
+      bubbleTailInner.style.right = '-6px'
+      bubbleTailInner.style.width = '0'
+      bubbleTailInner.style.height = '0'
+      bubbleTailInner.style.borderLeft = '6px solid transparent'
+      bubbleTailInner.style.borderRight = '6px solid transparent'
+      bubbleTailInner.style.borderTop = '6px solid #ffffff'
+
+      bubbleTail.appendChild(bubbleTailInner)
+      speechBubble.appendChild(bubbleTail)
+
+      // Add animations CSS
+      const style = document.createElement('style')
+      style.textContent = `
+        @keyframes clippyBounce {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-5px); }
+        }
+        @keyframes fadeInUp {
+          0% { 
+            opacity: 0; 
+            transform: translateY(10px) scale(0.8); 
+          }
+          100% { 
+            opacity: 1; 
+            transform: translateY(0px) scale(1); 
+          }
+        }
+        @keyframes fadeOut {
+          0% { opacity: 1; transform: scale(1); }
+          100% { opacity: 0; transform: scale(0.8); }
+        }
+      `
+      document.head.appendChild(style)
+
+      // Assemble the components
+      clippyContainer.appendChild(speechBubble)
+      clippyContainer.appendChild(clippy)
+      document.body.appendChild(clippyContainer)
+
+      // Animate out after delay
+      setTimeout(() => {
+        speechBubble.style.animation = 'fadeOut 0.5s ease-in forwards'
+        clippy.style.animation = 'fadeOut 0.5s ease-in forwards'
+
+        setTimeout(() => {
+          clippyContainer.remove()
+          style.remove()
+        }, 500)
+      }, PHI * 2500)
+    },
   ]
 
   const handleSurprise = () => {
@@ -500,6 +626,7 @@ export default function SurpriseButton() {
       'elastic_bounce',
       'disco_ball',
       'paper_airplane',
+      'clippy_helper',
     ]
 
     // Track the analytics event
