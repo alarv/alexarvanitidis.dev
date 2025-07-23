@@ -282,7 +282,8 @@ export default function SurpriseButton() {
       const htmlElement = document.documentElement
       const originalFilter = htmlElement.style.filter || ''
       htmlElement.style.transition = `filter ${PHI}s ease`
-      htmlElement.style.filter = 'sepia(1) contrast(1.3) saturate(0.8) brightness(1.1)'
+      htmlElement.style.filter =
+        'sepia(1) contrast(1.3) saturate(0.8) brightness(1.1)'
 
       // Add grain animation keyframes
       const style = document.createElement('style')
@@ -301,7 +302,7 @@ export default function SurpriseButton() {
         }
       `
       document.head.appendChild(style)
-      
+
       document.body.appendChild(sepiaOverlay)
       document.body.appendChild(grain)
 
@@ -314,7 +315,7 @@ export default function SurpriseButton() {
         // Fade out
         sepiaOverlay.style.opacity = '0'
         htmlElement.style.filter = originalFilter
-        
+
         setTimeout(() => {
           sepiaOverlay.remove()
           grain.remove()
