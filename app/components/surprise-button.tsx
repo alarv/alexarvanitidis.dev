@@ -132,9 +132,23 @@ export default function SurpriseButton() {
 
     // Effect 4: Matrix Rain
     () => {
-      const matrixChars = ['φ', '1.618', '1', '1', '2', '3', '5', '8', '13', '21', '34', '55', '89']
+      const matrixChars = [
+        'φ',
+        '1.618',
+        '1',
+        '1',
+        '2',
+        '3',
+        '5',
+        '8',
+        '13',
+        '21',
+        '34',
+        '55',
+        '89',
+      ]
       const currentScrollY = window.scrollY
-      
+
       for (let i = 0; i < 15; i++) {
         setTimeout(() => {
           const column = document.createElement('div')
@@ -147,15 +161,16 @@ export default function SurpriseButton() {
           column.style.pointerEvents = 'none'
           column.style.zIndex = '9999'
           column.style.opacity = '0.8'
-          
+
           // Create falling characters in the column
           for (let j = 0; j < 20; j++) {
             setTimeout(() => {
               const char = document.createElement('div')
-              char.textContent = matrixChars[Math.floor(Math.random() * matrixChars.length)]
+              char.textContent =
+                matrixChars[Math.floor(Math.random() * matrixChars.length)]
               char.style.opacity = Math.random() * 0.8 + 0.2 + ''
               column.appendChild(char)
-              
+
               setTimeout(() => {
                 char.style.transition = `all ${PHI * 2}s linear`
                 char.style.transform = `translateY(${window.innerHeight + 100}px)`
@@ -163,36 +178,46 @@ export default function SurpriseButton() {
               }, 100)
             }, j * 200)
           }
-          
+
           document.body.appendChild(column)
-          
-          setTimeout(() => {
-            column.remove()
-          }, PHI * 2000 + 4000)
+
+          setTimeout(
+            () => {
+              column.remove()
+            },
+            PHI * 2000 + 4000,
+          )
         }, i * 300)
       }
     },
 
     // Effect 5: Neon Glow Mode
     () => {
-      const elements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, a, button, span')
+      const elements = document.querySelectorAll(
+        'h1, h2, h3, h4, h5, h6, p, a, button, span',
+      )
       const originalStyles = new Map()
-      
+
       elements.forEach((el) => {
         const htmlEl = el as HTMLElement
         originalStyles.set(el, {
-          textShadow: htmlEl.style.textShadow || window.getComputedStyle(htmlEl).textShadow,
-          transition: htmlEl.style.transition
+          textShadow:
+            htmlEl.style.textShadow ||
+            window.getComputedStyle(htmlEl).textShadow,
+          transition: htmlEl.style.transition,
         })
-        
-        const neonColors = ['0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff',
-                           '0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff',
-                           '0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 15px #ffff00']
-        
+
+        const neonColors = [
+          '0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff',
+          '0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff',
+          '0 0 5px #ffff00, 0 0 10px #ffff00, 0 0 15px #ffff00',
+        ]
+
         htmlEl.style.transition = 'text-shadow 0.3s ease'
-        htmlEl.style.textShadow = neonColors[Math.floor(Math.random() * neonColors.length)]
+        htmlEl.style.textShadow =
+          neonColors[Math.floor(Math.random() * neonColors.length)]
       })
-      
+
       setTimeout(() => {
         elements.forEach((el) => {
           const htmlEl = el as HTMLElement
@@ -213,7 +238,7 @@ export default function SurpriseButton() {
       document.body.style.filter = 'blur(2px)'
       document.body.style.transform = 'scale(0.98)'
       document.body.style.imageRendering = 'pixelated'
-      
+
       setTimeout(() => {
         document.body.style.filter = 'blur(0px)'
         document.body.style.transform = 'scale(1)'
@@ -238,11 +263,11 @@ export default function SurpriseButton() {
       grain.style.pointerEvents = 'none'
       grain.style.zIndex = '9998'
       grain.style.animation = 'grain 0.2s steps(10) infinite'
-      
+
       // Add sepia filter to body
       document.body.style.transition = `filter ${PHI}s ease`
       document.body.style.filter = 'sepia(0.8) contrast(1.2)'
-      
+
       // Add grain animation keyframes
       const style = document.createElement('style')
       style.textContent = `
@@ -261,7 +286,7 @@ export default function SurpriseButton() {
       `
       document.head.appendChild(style)
       document.body.appendChild(grain)
-      
+
       setTimeout(() => {
         document.body.style.filter = ''
         grain.remove()
@@ -277,7 +302,7 @@ export default function SurpriseButton() {
       const intensity = 10
       let shakeCount = 0
       const maxShakes = PHI * 20
-      
+
       const shake = () => {
         if (shakeCount < maxShakes) {
           const x = (Math.random() - 0.5) * intensity
@@ -298,21 +323,23 @@ export default function SurpriseButton() {
 
     // Effect 9: Gravity Drop
     () => {
-      const elements = document.querySelectorAll('h1, h2, h3, h4, p, img, button, div')
+      const elements = document.querySelectorAll(
+        'h1, h2, h3, h4, p, img, button, div',
+      )
       const originalTransforms = new Map()
-      
+
       elements.forEach((el, index) => {
         const htmlEl = el as HTMLElement
         originalTransforms.set(el, htmlEl.style.transform || '')
-        
+
         setTimeout(() => {
           htmlEl.style.transition = `transform ${PHI * 0.8}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`
           htmlEl.style.transform = `translateY(${Math.random() * 50 + 20}px) rotate(${(Math.random() - 0.5) * 10}deg)`
-          
+
           setTimeout(() => {
             htmlEl.style.transition = `transform ${PHI * 0.6}s cubic-bezier(0.34, 1.56, 0.64, 1)`
             htmlEl.style.transform = originalTransforms.get(el)
-            
+
             setTimeout(() => {
               htmlEl.style.transition = ''
             }, PHI * 600)
@@ -325,13 +352,13 @@ export default function SurpriseButton() {
     () => {
       document.body.style.transition = `transform ${PHI * 1.5}s cubic-bezier(0.68, -0.55, 0.265, 1.55)`
       document.body.style.transform = 'scale(1.05)'
-      
+
       setTimeout(() => {
         document.body.style.transform = 'scale(0.95)'
-        
+
         setTimeout(() => {
           document.body.style.transform = 'scale(1.02)'
-          
+
           setTimeout(() => {
             document.body.style.transform = 'scale(1)'
             setTimeout(() => {
@@ -345,7 +372,7 @@ export default function SurpriseButton() {
     // Effect 11: Disco Ball
     () => {
       const currentScrollY = window.scrollY
-      
+
       // Create disco ball overlay
       const disco = document.createElement('div')
       disco.style.position = 'absolute'
@@ -353,11 +380,12 @@ export default function SurpriseButton() {
       disco.style.left = '0'
       disco.style.width = '100vw'
       disco.style.height = '100vh'
-      disco.style.background = 'conic-gradient(from 0deg, transparent 0deg, rgba(255,0,255,0.3) 60deg, transparent 120deg, rgba(0,255,255,0.3) 180deg, transparent 240deg, rgba(255,255,0,0.3) 300deg, transparent 360deg)'
+      disco.style.background =
+        'conic-gradient(from 0deg, transparent 0deg, rgba(255,0,255,0.3) 60deg, transparent 120deg, rgba(0,255,255,0.3) 180deg, transparent 240deg, rgba(255,255,0,0.3) 300deg, transparent 360deg)'
       disco.style.pointerEvents = 'none'
       disco.style.zIndex = '9997'
       disco.style.animation = `discoSpin ${PHI * 2}s linear infinite`
-      
+
       // Add spinning keyframes
       const style = document.createElement('style')
       style.textContent = `
@@ -368,22 +396,25 @@ export default function SurpriseButton() {
       `
       document.head.appendChild(style)
       document.body.appendChild(disco)
-      
+
       // Add sparkle effects
       for (let i = 0; i < 20; i++) {
         setTimeout(() => {
           const sparkle = document.createElement('div')
           sparkle.style.position = 'absolute'
           sparkle.style.left = Math.random() * 100 + '%'
-          sparkle.style.top = currentScrollY + Math.random() * window.innerHeight + 'px'
+          sparkle.style.top =
+            currentScrollY + Math.random() * window.innerHeight + 'px'
           sparkle.style.width = '4px'
           sparkle.style.height = '4px'
-          sparkle.style.background = ['#ff00ff', '#00ffff', '#ffff00'][Math.floor(Math.random() * 3)]
+          sparkle.style.background = ['#ff00ff', '#00ffff', '#ffff00'][
+            Math.floor(Math.random() * 3)
+          ]
           sparkle.style.borderRadius = '50%'
           sparkle.style.pointerEvents = 'none'
           sparkle.style.zIndex = '9998'
           sparkle.style.animation = 'sparkle 0.5s ease-in-out'
-          
+
           const sparkleStyle = document.createElement('style')
           sparkleStyle.textContent = `
             @keyframes sparkle {
@@ -394,14 +425,14 @@ export default function SurpriseButton() {
           `
           document.head.appendChild(sparkleStyle)
           document.body.appendChild(sparkle)
-          
+
           setTimeout(() => {
             sparkle.remove()
             sparkleStyle.remove()
           }, 500)
         }, i * 100)
       }
-      
+
       setTimeout(() => {
         disco.remove()
         style.remove()
@@ -411,35 +442,42 @@ export default function SurpriseButton() {
     // Effect 12: Paper Airplane
     () => {
       const currentScrollY = window.scrollY
-      
+
       for (let i = 0; i < 5; i++) {
-        setTimeout(() => {
-          const airplane = document.createElement('div')
-          airplane.innerHTML = `
+        setTimeout(
+          () => {
+            const airplane = document.createElement('div')
+            airplane.innerHTML = `
             <svg width="40" height="20" viewBox="0 0 40 20" style="transform: rotate(${Math.random() * 20 - 10}deg);">
               <path d="M0 10 L15 0 L40 10 L15 20 Z" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
               <path d="M15 10 L25 5 L25 15 Z" fill="#FFA500"/>
             </svg>
           `
-          airplane.style.position = 'absolute'
-          airplane.style.left = '-50px'
-          airplane.style.top = currentScrollY + Math.random() * window.innerHeight + 'px'
-          airplane.style.pointerEvents = 'none'
-          airplane.style.zIndex = '9999'
-          airplane.style.transition = `all ${PHI * 3}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`
-          
-          document.body.appendChild(airplane)
-          
-          setTimeout(() => {
-            airplane.style.left = window.innerWidth + 50 + 'px'
-            airplane.style.transform = `translateY(${(Math.random() - 0.5) * 200}px) rotate(${Math.random() * 360}deg)`
-            airplane.style.opacity = '0'
-          }, 100)
-          
-          setTimeout(() => {
-            airplane.remove()
-          }, PHI * 3000 + 200)
-        }, i * PHI * 400)
+            airplane.style.position = 'absolute'
+            airplane.style.left = '-50px'
+            airplane.style.top =
+              currentScrollY + Math.random() * window.innerHeight + 'px'
+            airplane.style.pointerEvents = 'none'
+            airplane.style.zIndex = '9999'
+            airplane.style.transition = `all ${PHI * 3}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`
+
+            document.body.appendChild(airplane)
+
+            setTimeout(() => {
+              airplane.style.left = window.innerWidth + 50 + 'px'
+              airplane.style.transform = `translateY(${(Math.random() - 0.5) * 200}px) rotate(${Math.random() * 360}deg)`
+              airplane.style.opacity = '0'
+            }, 100)
+
+            setTimeout(
+              () => {
+                airplane.remove()
+              },
+              PHI * 3000 + 200,
+            )
+          },
+          i * PHI * 400,
+        )
       }
     },
   ]
@@ -451,7 +489,7 @@ export default function SurpriseButton() {
     const effectIndex = Math.floor(Math.random() * surpriseEffects.length)
     const effectNames = [
       'upside_down_flip',
-      'golden_confetti', 
+      'golden_confetti',
       'color_chaos',
       'matrix_rain',
       'neon_glow',
@@ -461,7 +499,7 @@ export default function SurpriseButton() {
       'gravity_drop',
       'elastic_bounce',
       'disco_ball',
-      'paper_airplane'
+      'paper_airplane',
     ]
 
     // Track the analytics event
