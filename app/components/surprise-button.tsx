@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { track } from '@vercel/analytics'
 
 const PHI = 1.618
 
@@ -134,8 +135,17 @@ export default function SurpriseButton() {
     if (isActive) return
 
     setIsActive(true)
-    const randomEffect =
-      surpriseEffects[Math.floor(Math.random() * surpriseEffects.length)]
+    const effectIndex = Math.floor(Math.random() * surpriseEffects.length)
+    const effectNames = ['upside_down_flip', 'golden_confetti', 'color_chaos']
+    
+    // Track the analytics event
+    track('surprise_button_clicked', {
+      effect: effectNames[effectIndex],
+      scroll_position: window.scrollY,
+      viewport_height: window.innerHeight
+    })
+    
+    const randomEffect = surpriseEffects[effectIndex]
     randomEffect()
 
     setTimeout(() => {
