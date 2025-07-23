@@ -11,6 +11,7 @@ import { XIcon } from 'lucide-react'
 import { Magnetic } from '@/components/ui/magnetic'
 import { motion } from 'motion/react'
 import { EMAIL, PROJECTS, SOCIAL_LINKS, WORK_EXPERIENCE } from '@/app/data'
+import Image from 'next/image'
 import { Spotlight } from '@/components/ui/spotlight'
 import BlogFeed from '@/app/blog/components/BlogFeed'
 
@@ -186,11 +187,13 @@ export default function Home() {
                 size={64}
               />
               <div className="relative h-full w-full rounded-[15px] bg-white p-4 dark:bg-zinc-950">
-                <div className="relative flex w-full flex-row justify-between items-center">
+                <div className="relative flex w-full flex-row items-center justify-between">
                   <div className="flex items-center space-x-3">
-                    <img 
-                      src={job.image} 
+                    <Image
+                      src={job.image}
                       alt={`${job.company} logo`}
+                      width={40}
+                      height={40}
                       className="h-10 w-10 rounded-lg object-contain"
                     />
                     <div>
