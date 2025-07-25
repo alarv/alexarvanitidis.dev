@@ -533,8 +533,9 @@ export default function SurpriseButton() {
       speechBubble.style.position = 'absolute'
       speechBubble.style.bottom = '85px'
       speechBubble.style.right = '10px'
-      speechBubble.style.backgroundColor = '#ffffff'
-      speechBubble.style.border = '2px solid #000000'
+      speechBubble.style.backgroundColor = 'var(--bg-color, #ffffff)'
+      speechBubble.style.border = '2px solid var(--border-color, #000000)'
+      speechBubble.style.color = 'var(--text-color, #000000)'
       speechBubble.style.borderRadius = '8px'
       speechBubble.style.padding = '8px 12px'
       speechBubble.style.fontSize = '14px'
@@ -552,7 +553,7 @@ export default function SurpriseButton() {
       bubbleTail.style.height = '0'
       bubbleTail.style.borderLeft = '8px solid transparent'
       bubbleTail.style.borderRight = '8px solid transparent'
-      bubbleTail.style.borderTop = '8px solid #000000'
+      bubbleTail.style.borderTop = '8px solid var(--border-color, #000000)'
 
       const bubbleTailInner = document.createElement('div')
       bubbleTailInner.style.position = 'absolute'
@@ -562,14 +563,28 @@ export default function SurpriseButton() {
       bubbleTailInner.style.height = '0'
       bubbleTailInner.style.borderLeft = '6px solid transparent'
       bubbleTailInner.style.borderRight = '6px solid transparent'
-      bubbleTailInner.style.borderTop = '6px solid #ffffff'
+      bubbleTailInner.style.borderTop = '6px solid var(--bg-color, #ffffff)'
 
       bubbleTail.appendChild(bubbleTailInner)
       speechBubble.appendChild(bubbleTail)
 
-      // Add animations CSS
+      // Add animations CSS and dark mode support
       const style = document.createElement('style')
       style.textContent = `
+        :root {
+          --bg-color: #ffffff;
+          --border-color: #000000;
+          --text-color: #000000;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+          :root {
+            --bg-color: #1f2937;
+            --border-color: #374151;
+            --text-color: #f9fafb;
+          }
+        }
+        
         @keyframes clippyBounce {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-5px); }
