@@ -13,9 +13,9 @@ export const revalidate = 3600 * 24
 
 ## What is an API? (Explain like I’m 5 version)
 
-An **API (Application Programming Interface)** is like a **magic box**. You put something in, and something useful comes out—but you don’t have to know how it works inside.
+An **API (Application Programming Interface)** is like a **magic box**. You put something in, and something useful comes out, but you don’t have to know how it works inside.
 
-Imagine a **vending machine**. You press a button, and it gives you candy. You don’t need to know how the machine sorts coins, spins gears, or drops the candy. That’s a **black box**—you use it without understanding its inner workings.
+Imagine a **vending machine**. You press a button, and it gives you candy. You don’t need to know how the machine sorts coins, spins gears, or drops the candy. That’s a **black box**, you use it without understanding its inner workings.
 
 APIs work the same way. They let different programs talk to each other **without revealing the messy details inside**.
 
@@ -26,7 +26,7 @@ APIs exist beyond code. Here are a few examples:
 - **Driving a car** → You don’t need to understand the engine; the **steering wheel and pedals** are the API.
 - **Making coffee** → A **coffee machine** is a black box. You press a button, and it does everything for you.
 - **Restaurants** → A **menu** is an API for ordering food. You don’t need to know how the chef cooks it.
-- **iPhone vs. Android** → Apple’s iPhone has a **single button** (or none now), abstracting most functionality away. Android, on the other hand, kept the **three-button navigation**—especially the back button, which gives users more control. Both are APIs, but they strike different balances between abstraction and usability.
+- **iPhone vs. Android** → Apple’s iPhone has a **single button** (or none now), abstracting most functionality away. Android, on the other hand, kept the **three-button navigation**, especially the back button, which gives users more control. Both are APIs, but they strike different balances between abstraction and usability.
 
 The best APIs, in code or in life, simplify complexity. But abstraction is a double-edged sword: **abstract too much, and users lose control; abstract too little, and it becomes too complicated.**
 
@@ -38,7 +38,7 @@ At a past job, I built an API for event tracking. Initially, it was clean. But t
 
 **Bad idea.**
 
-Developers had no clue what to pass. Some added event names, others threw in random metadata. The API became an unpredictable black box—people threw things in, but didn’t know what would come out.
+Developers had no clue what to pass. Some added event names, others threw in random metadata. The API became an unpredictable black box, people threw things in, but didn’t know what would come out.
 
 The fix? I introduced an **`AnalyticsParamsBuilder`**, guiding developers with a structured, self-documenting approach.
 
@@ -68,7 +68,7 @@ Suddenly, the API was predictable and user-friendly.
 
 ## The takeaway
 
-A great API—whether in software or life—**hides complexity without sacrificing clarity**.
+A great API, whether in software or life, **hides complexity without sacrificing clarity**.
 
 Before designing an API, ask yourself:
 
@@ -98,7 +98,7 @@ A common mistake is **over-simplifying** an API to the point where users don’t
 
 ### 4. Users will do whatever works for them
 
-Users don’t always care about **efficiency** or **best practices**—they care about **what works**.
+Users don’t always care about **efficiency** or **best practices**, they care about **what works**.
 
 - I once worked with people who **clean installed our entire project** every time they needed to rebuild it. It took **5 minutes** instead of manually changing a file, which would take **5 seconds**.
 - Why?
@@ -115,12 +115,12 @@ Users don’t want to know how your API works under the hood. They **expect it t
 - A car has a **steering wheel** instead of individual controls for each tire.
 - A coffee machine doesn’t require you to **manually adjust water temperature**.
 
-APIs should follow the same principle—**hide complexity, but don’t strip away control.**
+APIs should follow the same principle, **hide complexity, but don’t strip away control.**
 
 ### The Balance of API Design
 
-A good API is a **well-designed black box**—you know what it does, you trust how it works, and you don’t need to open it.
+A good API is a **well-designed black box**, you know what it does, you trust how it works, and you don’t need to open it.
 
-Just like a vending machine, a car’s controls, or a coffee machine, the best APIs are **useful black boxes**—they just work.
+Just like a vending machine, a car’s controls, or a coffee machine, the best APIs are **useful black boxes**, they just work.
 
 And abstracting the right things on an API is an art.

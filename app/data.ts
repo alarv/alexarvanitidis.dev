@@ -187,7 +187,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     title: 'The luxury of letting ideas marinate',
     description:
-      'This post explores the power of letting ideas sit. It reflects on how having time, space, and a clear mind can lead to better solutions — especially in engineering and research. It contrasts rushed patches with well-thought-out fixes that emerge when pressure is low and the mind is calm.',
+      'This post explores the power of letting ideas sit. It reflects on how having time, space, and a clear mind can lead to better solutions ,  especially in engineering and research. It contrasts rushed patches with well-thought-out fixes that emerge when pressure is low and the mind is calm.',
     link: '/blog/the-luxury-of-letting-ideas-marinate',
     uid: 'blog/the-luxury-of-letting-ideas-marinate',
   },

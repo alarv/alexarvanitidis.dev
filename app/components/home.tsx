@@ -132,9 +132,9 @@ export default function Home() {
       >
         <div className="flex-1">
           <p className="text-zinc-600 dark:text-zinc-400">
-            Engineering scalable AI systems—building and deploying deep learning
-            models, fine-tuned LLMs, and AI agents on AWS—with a strong
-            full-stack engineering background of 10+ years.
+            Engineering scalable AI systems, building and deploying deep
+            learning models, fine-tuned LLMs, and AI agents on AWS, with a
+            strong full-stack engineering background of 10+ years.
           </p>
         </div>
       </motion.section>
