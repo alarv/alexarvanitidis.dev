@@ -171,7 +171,7 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: "Microlearning is the new way to learn",
+    title: 'Microlearning is the new way to learn',
     description:
       'How I use microlearning to keep up with fast-moving tech trends through short, daily doses of content across social media and YouTube.',
     link: '/blog/microlearning-is-the-new-learning',
