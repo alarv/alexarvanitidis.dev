@@ -49,6 +49,8 @@ We added multiple signals before advancing: URL patterns, page counters, and con
 
 Lesson learned: add clear info logs (which page you’re crawling and which loop iteration you’re on), keep DB access handy to spot anomalies, and know your system’s flow—this bug was silent while machines crawled forever and load quietly climbed. Watching load‑average anomalies helps too; you can pinpoint the day and the commit that changed behavior and narrow the search fast.
 
+Last but not least: Always have a kill switch for a loop. In any exceptional case the loop could go on forever, so there should be a hard limit such as a hard cap that kills the loop and logs an error, instead of producing a bug that is difficult to solve on a prod environment.
+
 ## Read previous
 
 [← #1 the N+1 problem](/blog/worst-bugs-n-plus-one)
