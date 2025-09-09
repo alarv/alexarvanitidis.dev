@@ -171,35 +171,35 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    title: 'The worst bugs on production - #1 the N+1 problem',
+    title: "The 5 worst bugs I've seen on production - #1 the N+1 problem",
     description:
       'A tiny JOIN turned one request into ~100 queries—the graph looked like a heartbeat.',
     link: '/blog/worst-bugs-n-plus-one',
     uid: 'blog/worst-bugs-n-plus-one',
   },
   {
-    title: 'The worst bugs on production - #2 the infinite crawler',
+    title: "The 5 worst bugs I've seen on production - #2 the infinite crawler",
     description:
       "A 'Back to start' button shared the Next selector, looping forever and flooding the DB.",
     link: '/blog/worst-bugs-infinite-crawler',
     uid: 'blog/worst-bugs-infinite-crawler',
   },
   {
-    title: 'The worst bugs on production - #3 the €300,000 double refund',
+    title: "The 5 worst bugs I've seen on production - #3 the €300,000 double refund",
     description:
       'A refund path ran twice for 15 minutes, costing €300k before a sanity check caught it.',
     link: '/blog/worst-bugs-double-refund-300k',
     uid: 'blog/worst-bugs-double-refund-300k',
   },
   {
-    title: 'The worst bugs on production - #4 the $60 otp ddos',
+    title: "The 5 worst bugs I've seen on production - #4 the $60 otp ddos",
     description:
       'An OTP endpoint was abused across many IPs; budget burned twice after no action items.',
     link: '/blog/worst-bugs-60-dollar-ddos',
     uid: 'blog/worst-bugs-60-dollar-ddos',
   },
   {
-    title: 'The worst bugs on production - #5 the animation memory leak',
+    title: "The 5 worst bugs I've seen on production - #5 the animation memory leak",
     description:
       'Long sessions leaked ~2MB per animation; snapshots revealed unreleased lottie instances.',
     link: '/blog/worst-bugs-mobile-memory-leak',
