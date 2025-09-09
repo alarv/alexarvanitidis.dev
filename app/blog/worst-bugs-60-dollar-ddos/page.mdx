@@ -1,0 +1,46 @@
+export const metadata = {
+  title:
+    "The worst bugs on production - #4 the $60 otp ddos | Alex Arvanitidis's Blog",
+  description:
+    'An otp sms endpoint was abused across many ips. Budget burned twice because we left without action items.',
+  openGraph: {
+    title: 'The worst bugs on production - #4 the $60 otp ddos',
+    images: ['/well-hidden-bug.jpg'],
+  },
+}
+
+export const revalidate = 3600 * 24
+
+# #4 the $60 otp ddos
+
+<PublishedOn date={new Date(2025, 8, 9)} />
+
+<Cover src="/well-hidden-bug.jpg" alt="" caption="" />
+
+This one showed up as user complaints about OTP codes failing early in the morning. Our AWS SNS balance had been drained. The endpoint was public by design, and we had IP‑based rate limiting. The attacker simply sent requests from many different IPs, so our limit did nothing.
+
+## What is it?
+
+An OTP is a one‑time password used to verify a user or action. A DDoS is a distributed denial‑of‑service attack, where many sources flood a service to exhaust resources or budget. See: [One‑time password (Wikipedia)](https://en.wikipedia.org/wiki/One-time_password) and [Denial‑of‑service attack (Wikipedia)](https://en.wikipedia.org/wiki/Denial-of-service_attack).
+
+## Problem
+
+We were sending OTP SMS through AWS SNS. The service was unauthenticated because it needed to be. Our protection was based only on the caller’s IP address, which did not stop traffic coming from hundreds of different machines.
+
+## Impact
+
+Around 6am EU time, the $30 SMS budget was exhausted within minutes. We jumped on a call, found the cause, and made a mistake: we closed the meeting without action points. Two days later, when the budget reset, the same thing happened again. Another $30 gone, plus downtime while AWS re‑approved the spend, which took about two days.
+
+## Solution
+
+The main lesson was ownership and follow‑through. Incidents now end with clear action items, owners, and deadlines. We also treated the initial spend as a warning and made sure there were concrete next steps before closing the incident.
+
+Lesson learned: problems don’t fix themselves. Always leave incidents with explicit actions and owners, especially when money is involved.
+
+## Read previous
+
+[← #3 The €300,000 Double Refund](/blog/worst-bugs-double-refund-300k)
+
+## Read next
+
+[#5 The animation memory leak →](/blog/worst-bugs-mobile-memory-leak)

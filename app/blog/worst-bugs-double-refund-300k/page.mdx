@@ -1,0 +1,42 @@
+export const metadata = {
+  title: "The worst bugs on production - #3 the €300,000 double refund | Alex Arvanitidis's Blog",
+  description:
+    'For 15 minutes, refunds ran twice. A quick sanity check caught it—after €300k was gone.',
+  openGraph: { title: 'The worst bugs on production - #3 the €300,000 double refund', images: ['/well-hidden-bug.jpg'] },
+}
+
+export const revalidate = 3600 * 24
+
+# The worst bugs on production - #3 the €300,000 double refund
+
+<PublishedOn date={new Date(2025, 8, 9)} />
+
+<Cover src="/well-hidden-bug.jpg" alt="" caption="" />
+
+This one reached us through friends at another company and made everyone sit up. Refunds were going out twice per request. It ran for about 15 minutes before someone noticed the totals looked wrong and pulled the plug. The cost was roughly €300,000.
+
+## What is it?
+
+In payment systems, operations like “refund” should be idempotent, which means running them more than once does not change the result beyond the first time. When idempotency breaks, the same request can be applied twice. See: [Idempotence (Wikipedia)](https://en.wikipedia.org/wiki/Idempotence).
+
+## Problem
+
+There was a bug in the refund logic that caused a double payment. I don’t know the exact code path, only that it resulted in every refund going out twice for a short window.
+
+## Impact
+
+Real money was lost. The issue ran for about 15 minutes. It was caught by an engineering manager doing a quick sanity check after noticing an anomaly in the refund numbers on the monitoring dashboard.
+
+## Solution
+
+I wasn’t involved in the fix. My takeaway was simple: add more double‑checks and tests around payment code, set clear alerts for unusual refund volume or totals, and do a short manual sanity check after any change that touches refunds.
+
+Lesson learned: treat payment code like a loaded tool. Assume duplicates, add idempotency and invariants, and set hard alerts on rate/volume.
+
+## Read previous
+
+[← #2 The Infinite Crawler](/blog/worst-bugs-infinite-crawler)
+
+## Read next
+
+[#4 The $60 OTP DDoS →](/blog/worst-bugs-60-dollar-ddos)

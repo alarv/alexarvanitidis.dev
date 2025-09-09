@@ -1,0 +1,54 @@
+export const metadata = {
+  title: "The worst bugs on production - #2 the infinite crawler | Alex Arvanitidis's Blog",
+  description:
+    "A 'back to start' button reused the 'next' selector. Our crawler followed the href and looped forever, flooding the DB.",
+  openGraph: { title: 'The worst bugs on production - #2 the infinite crawler', images: ['/well-hidden-bug.jpg'] },
+}
+
+export const revalidate = 3600 * 24
+
+# The worst bugs on production - #2 the infinite crawler
+
+<PublishedOn date={new Date(2025, 8, 9)} />
+
+<Cover src="/well-hidden-bug.jpg" alt="" caption="" />
+
+This surfaced after a normal rollout to a new client. Our scraper had been stable for months, but suddenly the machines were stressed and showed a high load average, with no obvious errors. The crawler’s logic was simple: find the “next” button by selector, read its href, and follow that URL to get the next page.
+
+## What is it?
+
+A web crawler is a program that automatically follows links to fetch pages. If a loop sends it back to the start and it keeps following links, it can get stuck in an [infinite loop](https://en.wikipedia.org/wiki/Infinite_loop). See: [Web crawler (Wikipedia)](https://en.wikipedia.org/wiki/Web_crawler).
+
+## Problem
+
+We identified the next page by querying the “next” button and following its link, roughly like this:
+
+```js
+const next = document.querySelector('button.next')
+if (!next) done = true
+else url = next.getAttribute('href')
+```
+
+On this site, the last page didn’t remove the button. Instead, the same selector matched a “back to start” button that pointed to page 1. So when we reached the end, we jumped back to the beginning and continued forever.
+
+## Impact
+
+Workers stayed busy. Each lap took about a second, so graphs looked healthy. The database told the truth: thousands of “pages” saved for an article that had ~50 real pages.
+
+![Selector sketch](/infinite-crawler-selector.svg)
+
+_We used something like $('button.next') (or equivalent). On the last page, the same selector matched “back to start”, which sent us to page 1 again._
+
+## Solution
+
+We added multiple signals before advancing: URL patterns, page counters, and content hashes to detect repeats. We set a hard page cap and made writes idempotent so re‑processing wouldn’t create new rows. We also tightened the selector logic to require a forward page number in the URL.
+
+Lesson learned: add clear info logs (which page you’re crawling and which loop iteration you’re on), keep DB access handy to spot anomalies, and know your system’s flow—this bug was silent while machines crawled forever and load quietly climbed. Watching load‑average anomalies helps too; you can pinpoint the day and the commit that changed behavior and narrow the search fast.
+
+## Read previous
+
+[← #1 the N+1 problem](/blog/worst-bugs-n-plus-one)
+
+## Read next
+
+[#3 The €300,000 Double Refund →](/blog/worst-bugs-double-refund-300k)
