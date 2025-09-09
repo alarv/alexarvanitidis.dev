@@ -1,8 +1,12 @@
 export const metadata = {
-  title: "The worst bugs on production - #2 the infinite crawler | Alex Arvanitidis's Blog",
+  title:
+    "The worst bugs on production - #2 the infinite crawler | Alex Arvanitidis's Blog",
   description:
     "A 'back to start' button reused the 'next' selector. Our crawler followed the href and looped forever, flooding the DB.",
-  openGraph: { title: 'The worst bugs on production - #2 the infinite crawler', images: ['/well-hidden-bug.jpg'] },
+  openGraph: {
+    title: 'The worst bugs on production - #2 the infinite crawler',
+    images: ['/well-hidden-bug.jpg'],
+  },
 }
 
 export const revalidate = 3600 * 24

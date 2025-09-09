@@ -20,9 +20,9 @@ const eslintConfig = [
     ...mdx.flat,
   },
   {
-    files: ["**/*.mdx"],
+    files: ['**/*.mdx'],
     rules: {
-      "react/jsx-no-undef": "off",
+      'react/jsx-no-undef': 'off',
     },
   },
 ]
