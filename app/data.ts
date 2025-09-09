@@ -185,7 +185,8 @@ export const BLOG_POSTS: BlogPost[] = [
     uid: 'blog/worst-bugs-infinite-crawler',
   },
   {
-    title: "The 5 worst bugs I've seen on production - #3 the €300,000 double refund",
+    title:
+      "The 5 worst bugs I've seen on production - #3 the €300,000 double refund",
     description:
       'A refund path ran twice for 15 minutes, costing €300k before a sanity check caught it.',
     link: '/blog/worst-bugs-double-refund-300k',
@@ -199,7 +200,8 @@ export const BLOG_POSTS: BlogPost[] = [
     uid: 'blog/worst-bugs-60-dollar-ddos',
   },
   {
-    title: "The 5 worst bugs I've seen on production - #5 the animation memory leak",
+    title:
+      "The 5 worst bugs I've seen on production - #5 the animation memory leak",
     description:
       'Long sessions leaked ~2MB per animation; snapshots revealed unreleased lottie instances.',
     link: '/blog/worst-bugs-mobile-memory-leak',
