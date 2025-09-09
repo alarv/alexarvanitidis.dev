@@ -17,11 +17,13 @@ export const revalidate = 3600 * 24
 
 <Cover src="/well-hidden-bug.jpg" alt="" caption="" />
 
-This bug lived in the long tail. We had shipped a mobile self‑help app with long user sessions. Most cards were simple text or small forms, but some included lottie animations. In quick development sessions everything looked fine. Only when someone used the app for a full run did the issue appear.
+This bug lived in the long tail. We had shipped a mobile self‑help app with long user sessions. Most cards were simple text or small forms, but some included Lottie animations (a JSON‑based vector animation format rendered via libraries). In quick development sessions everything looked fine. Only when someone used the app for a full run did the issue appear.
 
 ## What is it?
 
 A memory leak happens when an application keeps memory it no longer needs, so usage grows over time. Long sessions make leaks visible because the app never gets a chance to reset. See: [Memory leak (Wikipedia)](https://en.wikipedia.org/wiki/Memory_leak).
+
+Lottie is a lightweight animation format (JSON) created by Airbnb that plays vector animations natively on web and mobile via libraries. See: [Lottie by Airbnb](https://airbnb.io/lottie/).
 
 ## Problem
 
