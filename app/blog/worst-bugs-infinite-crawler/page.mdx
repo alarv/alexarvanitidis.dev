@@ -15,7 +15,11 @@ export const revalidate = 3600 * 24
 
 <PublishedOn date={new Date(2025, 8, 9)} />
 
-<Cover src="/well-hidden-bug.jpg" alt="A looping, maze-like pattern symbolizing an infinite crawler" caption="A mislabelled 'next' button quietly sent the crawler back to start." />
+<Cover
+  src="/well-hidden-bug.jpg"
+  alt="A looping, maze-like pattern symbolizing an infinite crawler"
+  caption="A mislabelled 'next' button quietly sent the crawler back to start."
+/>
 
 This surfaced after a normal rollout to a new client. Our scraper had been stable for months, but suddenly machines were busy and the load average crept up, with no obvious errors. The crawler’s logic was simple: find the “next” button by selector, read its href, and follow that URL to get the next page.
 
