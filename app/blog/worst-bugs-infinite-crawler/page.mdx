@@ -1,23 +1,23 @@
 export const metadata = {
   title:
-    "The 5 worst bugs I've seen on production - #2 the infinite crawler | Alex Arvanitidis's Blog",
+    "5 worst bugs I've seen on production #2: the infinite crawler | Alex Arvanitidis's Blog",
   description:
-    "A 'back to start' button reused the 'next' selector. Our crawler followed the href and looped forever, flooding the DB.",
+    "In production, a 'back to start' button reused the 'next' selector. Our crawler looped and flooded the DB until we added guardrails.",
   openGraph: {
-    title: "The 5 worst bugs I've seen on production - #2 the infinite crawler",
+    title: "5 worst bugs I've seen on production #2: the infinite crawler",
     images: ['/well-hidden-bug.jpg'],
   },
 }
 
 export const revalidate = 3600 * 24
 
-# The 5 worst bugs I've seen on production - #2 the infinite crawler
+# 5 worst bugs I've seen on production #2: the infinite crawler
 
 <PublishedOn date={new Date(2025, 8, 9)} />
 
-<Cover src="/well-hidden-bug.jpg" alt="" caption="" />
+<Cover src="/well-hidden-bug.jpg" alt="A looping, maze-like pattern symbolizing an infinite crawler" caption="A mislabelled 'next' button quietly sent the crawler back to start." />
 
-This surfaced after a normal rollout to a new client. Our scraper had been stable for months, but suddenly the machines were stressed and showed a high load average, with no obvious errors. The crawler’s logic was simple: find the “next” button by selector, read its href, and follow that URL to get the next page.
+This surfaced after a normal rollout to a new client. Our scraper had been stable for months, but suddenly machines were busy and the load average crept up, with no obvious errors. The crawler’s logic was simple: find the “next” button by selector, read its href, and follow that URL to get the next page.
 
 ## What is it?
 
@@ -39,6 +39,13 @@ On this site, the last page didn’t remove the button. Instead, the same select
 
 Workers stayed busy. Each lap took about a second, so graphs looked healthy. The database told the truth: thousands of “pages” saved for an article that had ~50 real pages.
 
+Signals that gave it away:
+
+- Repeated URL pattern (page query flickering between last and 1)
+- Duplicate content hashes for consecutive pages
+- Page count exceeding a sensible cap
+- Load average trending up without matching throughput gain
+
 ![Selector sketch](/infinite-crawler-selector.svg)
 
 _We used something like $('button.next') (or equivalent). On the last page, the same selector matched “back to start”, which sent us to page 1 again._
@@ -47,9 +54,47 @@ _We used something like $('button.next') (or equivalent). On the last page, the 
 
 We added multiple signals before advancing: URL patterns, page counters, and content hashes to detect repeats. We set a hard page cap and made writes idempotent so re‑processing wouldn’t create new rows. We also tightened the selector logic to require a forward page number in the URL.
 
+A safer crawl loop looked like this (pseudocode):
+
+```ts
+const seenUrls = new Set<string>()
+const seenHashes = new Set<string>()
+let page = 1
+const maxPages = 200
+
+while (true) {
+  const html = await fetch(url)
+  const hash = stableContentHash(html)
+
+  if (seenUrls.has(url) || seenHashes.has(hash) || page > maxPages) {
+    log.warn('stop: loop detected or cap hit', { url, page })
+    break
+  }
+
+  seenUrls.add(url)
+  seenHashes.add(hash)
+  await upsertPage({ url, html }) // idempotent write
+
+  const nextEl = selectNextButton()
+  const nextUrl = nextEl?.getAttribute('href')
+
+  if (!nextUrl) break
+  if (!isForwardLink(url, nextUrl)) break // ensure page number increases
+
+  url = toAbsoluteUrl(nextUrl)
+  page += 1
+}
+```
+
 Lesson learned: add clear info logs (which page you’re crawling and which loop iteration you’re on), keep DB access handy to spot anomalies, and know your system’s flow—this bug was silent while machines crawled forever and load quietly climbed. Watching load‑average anomalies helps too; you can pinpoint the day and the commit that changed behavior and narrow the search fast.
 
-Last but not least: Always have a kill switch for a loop. In any exceptional case the loop could go on forever, so there should be a hard limit such as a hard cap that kills the loop and logs an error, instead of producing a bug that is difficult to solve on a prod environment.
+Prevention checklist:
+
+- Hard stop: enforce a strict page cap
+- Loop detection: track seen URLs and content hashes
+- Forward‑only: validate the next URL actually advances
+- Idempotency: upsert writes to avoid duplication
+- Telemetry: log page index, next URL, and decision reason
 
 ## Read previous
 
@@ -57,4 +102,4 @@ Last but not least: Always have a kill switch for a loop. In any exceptional cas
 
 ## Read next
 
-[#3 The €300,000 Double Refund →](/blog/worst-bugs-double-refund-300k)
+[#3 the €300,000 double refund →](/blog/worst-bugs-double-refund-300k)
