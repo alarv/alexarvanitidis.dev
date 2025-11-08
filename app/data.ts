@@ -78,11 +78,20 @@ export const PROJECTS: Project[] = [
 
 export const WORK_EXPERIENCE: WorkExperience[] = [
   {
+    id: 'kaizen',
+    title: 'Machine Learning Engineer',
+    company: 'Kaizen Gaming',
+    start: 'Oct 2025',
+    end: 'Present',
+    link: 'https://kaizengaming.com/home',
+    image: '/companies/kaizen-gaming-logo.jpg',
+  },
+  {
     id: 'ntua',
     title: 'Machine Learning Engineer',
     company: 'National Technical University of Athens',
     start: 'Feb 2024',
-    end: 'Present',
+    end: 'Oct 2025',
     link: 'https://jaqpot.org',
     image: '/companies/ntua-logo.webp',
   },
