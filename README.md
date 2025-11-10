@@ -28,3 +28,30 @@ npm run dev
 ```
 
 Then open http://localhost:3000 in your browser.
+
+---
+
+## 🧹 Pre-commit formatting (recommended)
+
+Avoid build or CI failures caused by Prettier by enabling the provided pre-commit hook that formats staged files automatically:
+
+```bash
+npm run hooks
+```
+
+This maps Git hooks to `.githooks/`. The hook will:
+- Format staged `.ts/.tsx/.js/.jsx/.md/.mdx/.json/.css/.mjs/.cjs` files with Prettier
+- Re-stage any changes
+
+Useful scripts:
+
+```bash
+# Format everything in the repo
+npm run format
+
+# Check formatting without writing
+npm run format:check
+
+# Fix ESLint issues
+npm run lint:fix
+```
