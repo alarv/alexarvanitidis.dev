@@ -180,6 +180,14 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title:
+      'Celebrity traitors UK: a masterclass in deception and TV magic [no spoilers]',
+    description:
+      'A spoiler‑free reflection on why the BBC’s Celebrity Traitors UK shines: production, hosting, cast, and what it reveals about trust and deception.',
+    link: '/blog/celebrity-traitors-uk-no-spoilers',
+    uid: 'blog/celebrity-traitors-uk-no-spoilers',
+  },
+  {
     title: "The 5 worst bugs I've seen on production - #1 the N+1 problem",
     description:
       'A tiny JOIN turned one request into ~100 queries—the graph looked like a heartbeat.',
