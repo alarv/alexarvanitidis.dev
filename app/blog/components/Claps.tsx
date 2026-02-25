@@ -5,7 +5,7 @@ import { HeartIcon } from '@heroicons/react/24/solid'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import useSWR from 'swr'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'motion/react'
 
 async function incrementClaps(url: string) {
   const res = await fetch('/api/claps', {
