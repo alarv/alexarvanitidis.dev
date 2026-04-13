@@ -1,0 +1,57 @@
+export const metadata = {
+  title: 'Shipping production safeguards in weeks, not quarters',
+  description:
+    'How our team used LLMs to ship monitoring, alerting, typed contracts, end-to-end tests, and data quality checks faster than we ever could have done by hand.',
+}
+
+export const revalidate = 3600 * 24
+
+# Shipping production safeguards in weeks, not quarters
+
+<PublishedOn date={new Date(2026, 3, 13)} />
+
+<Cover
+  src="/shipping-production-safeguards-with-llms.png"
+  alt="Shipping production safeguards in weeks, not quarters"
+  caption=""
+/>
+
+Production safeguards are the work that every team knows they need but never seems to find time for. Monitoring dashboards, alerting rules, typed API contracts, end-to-end test coverage, data quality checks — all of it important, all of it easy to deprioritize when there are features to ship.
+
+Our team had three production incidents that went undetected until users reported them. A cache layer silently hitting its memory limit and evicting live data. A message broker filling its disk with no warning until things started failing. A deployment that passed all tests but broke specific configurations in specific environments, with no coverage to catch it.
+
+All three were silent. All three were avoidable. That was the moment we stopped deprioritizing.
+
+## What we shipped
+
+We spent the following weeks building safeguards at every layer of the system. This is the kind of work that used to take quarters. With LLMs handling the implementation, we moved through it in weeks.
+
+**Monitoring and alerting before failures happen.** We built a layered dashboard covering user-facing health, infrastructure metrics, and traffic patterns. The key shift was alerting at thresholds that fire before impact — cache memory at 85% before eviction starts, message broker disk at half the limit that caused the original incident. Alerts route to the right channels so the right people see them without noise drowning out the signal.
+
+**Typed contracts on every API endpoint.** Before, a bad payload would fail somewhere deep in business logic with a confusing error and a stack trace that pointed nowhere useful. After, bad data is rejected at the API boundary with a clear message explaining exactly what was wrong. This sounds like a small change. It eliminated an entire category of debugging within the first week.
+
+**End-to-end tests across every configuration and environment.** Unit tests cannot catch configuration-specific bugs. Only running against the real system can. We built a test runner that loops over every configuration across every environment and asserts correct behavior. Adding a new configuration is one line. The coverage that was missing when the third incident happened now exists.
+
+**Daily data quality checks on model inputs and outputs.** Stale or malformed data can silently corrupt results for days before anyone notices. We added a scheduled job that validates every model input and output table daily and fires a Slack alert if anything is stale or invalid, with the specific table and reason. No noise when everything passes. Clear signal when something is wrong.
+
+**CI quality gates introduced gradually.** We did not flip a switch and enforce everything at once. Formatting, linting, and type checking were added as non-blocking checks first, giving the team time to clean up before they became hard failures. Every gate earns its place before it blocks a merge.
+
+## How LLMs changed the pace
+
+The reason this shipped in weeks rather than quarters is simple: the boilerplate cost dropped to near zero.
+
+Alert rule configuration, schema definitions, test fixtures, dashboard JSON, validation logic — this is all implementation work that a good engineer can do but that takes time to write carefully. LLMs are very good at this kind of work. Given a clear description of what the alert should detect and when it should fire, the output was usually correct on the first pass or close enough to fix quickly.
+
+My job throughout was to describe what we needed precisely, review everything that came back, and catch the cases where the model missed domain context. There were a few. An alert threshold that looked right but did not account for normal traffic patterns. A validation rule that was technically correct but would have fired false positives in one environment. Things you only catch if you know the system.
+
+That is the pattern. LLMs handle the implementation fast. You handle the judgment.
+
+## What this taught us
+
+Silent failures are the most expensive kind. The three incidents that triggered this work each had a window where catching them earlier would have been trivial. We just had no visibility. The investment in building that visibility pays back immediately and compounds over time.
+
+Gradual rollout is underrated. Introducing quality gates that block merges overnight creates friction and resistance. Introducing them as warnings first, letting the team adapt, then making them blocking once the codebase is clean — that works.
+
+Typed contracts are not bureaucracy. They are documentation that the compiler enforces. Every hour spent defining them is paid back many times over in debugging time saved.
+
+The best safeguards are boring. A dashboard that is green and never gets looked at is doing its job. An alert that fires before anyone notices a problem is doing its job. The goal is not interesting incidents. The goal is no incidents.

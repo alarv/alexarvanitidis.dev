@@ -180,6 +180,13 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title: '1 year of LLMs writing code for me',
+    description:
+      'I have been an early adopter of AI coding tools since they became genuinely useful. Here is what that actually looks like day to day, and why experience matters more than ever.',
+    link: '/blog/1-year-of-llms-writing-code-for-me',
+    uid: 'blog/1-year-of-llms-writing-code-for-me',
+  },
+  {
     title:
       'Celebrity traitors UK: a masterclass in deception and TV magic [no spoilers]',
     description:

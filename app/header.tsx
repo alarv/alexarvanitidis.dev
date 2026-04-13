@@ -15,6 +15,7 @@ export function Header() {
               height={72}
               src="/alex-arvanitidis.jpg"
               className="rounded-full"
+              loading="eager"
             />
           </div>
         </Link>

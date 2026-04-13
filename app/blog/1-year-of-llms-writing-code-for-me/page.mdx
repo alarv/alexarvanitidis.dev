@@ -1,0 +1,73 @@
+export const metadata = {
+  title: '1 year of LLMs writing code for me',
+  description:
+    'I have been an early adopter of AI coding tools since they became genuinely useful. Here is what that actually looks like day to day, and why experience matters more than ever.',
+}
+
+export const revalidate = 3600 * 24
+
+# 1 year of LLMs writing code for me
+
+<PublishedOn date={new Date(2026, 3, 13)} />
+
+<Cover
+  src="/1-year-of-llms-writing-code-for-me.jpg"
+  alt="1 year of LLMs writing code for me"
+  caption=""
+/>
+
+I have been an early adopter of AI coding tools. When the first serious agentic coding tools launched, I picked them up immediately and made them my daily driver. The way I work has changed more since then than in the previous five years combined.
+
+Something shifted noticeably around late 2025. The models crossed a threshold where the suggestions stopped being "pretty good starting points" and became "this is basically what I would have written." The back-and-forth shortened. The frustration dropped. The output was just accurate, most of the time.
+
+For the past year or so, I have written very little code by hand. I guide, review, and test instead.
+
+## What early adoption actually looked like
+
+In the beginning, it was not magic. Working with AI on non-trivial tasks meant a lot of prompt tuning, correction, and re-prompting. The models would confidently produce the wrong architecture, miss edge cases, or generate something that worked in isolation but did not fit the codebase. You had to babysit every decision.
+
+I stuck with it anyway, because even then the upside was real. Boilerplate that used to take an afternoon was done in minutes. Repetitive tasks I had been putting off for weeks got cleared in a single session. The ROI was obvious even when the output needed heavy editing.
+
+The tools matured fast. Full repo context, agent-driven workflows, the ability to hold a task across multiple files without losing the thread. These changed what is possible in a single session. OpenCode is where most people I know have landed now as the standard for this kind of work.
+
+## What my days actually look like now
+
+I spend most of my time doing three things.
+
+**Describing the problem clearly.** This is harder than it sounds. Vague prompts still produce vague output. If I want something good, I need to think carefully about constraints, edge cases, and what done looks like before I start. That thinking used to go into writing code. Now it goes into framing the problem well.
+
+**Reviewing diffs.** Every meaningful change goes through me before it merges. I read the code the same way I always did, looking for logic errors, missing error handling, things that will cause problems later. The source of the code changed. The judgment required to review it has not.
+
+**Catching the tangents.** The model sometimes goes off in a direction that is technically fine but wrong for the context. Over-engineering a simple thing, pulling in an abstraction that does not fit, solving a slightly different problem than the one I described. Redirecting that early saves a lot of cleanup later. This is where knowing the codebase and the domain deeply still matters.
+
+## The 10% is real
+
+Models are good enough now that most of what they produce is solid. But most is not all, and the bugs they do produce tend to be subtle. The kind that do not surface in tests. The kind you only catch if you are actually reading carefully.
+
+I have seen a confidently generated piece of logic that looked right at a glance but had a silent failure mode under a specific condition that only occurs in production. I caught it in review. Someone less familiar with the domain would have missed it.
+
+Years of writing code by hand built the instinct to know what to look for. The AI writes faster than I ever could. But I still need to know what good looks like, what subtle wrong looks like, and what questions to ask when something feels off.
+
+## Think of it like a chef
+
+Imagine a chef who has spent years cooking every dish by hand. They know every technique, every flavour combination, every way a dish can go wrong. One day they get a machine that can cook for them. Would they just sit in the kitchen and let it run? Hell no.
+
+They would stand over it the entire time. Tasting. Adjusting. Catching the moment the sauce starts to reduce too fast or the seasoning is off. The machine does the heavy lifting, but the chef is the one who makes the difference between a decent meal and a great one. Without their presence and judgment, the machine just produces food. With it, it produces something worth serving.
+
+That is exactly what this workflow feels like. The LLM is the machine. You are the chef. Your job is not to chop vegetables anymore. Your job is to make sure every dish that leaves the kitchen is actually good.
+
+## What I actually think about this
+
+I do not miss writing boilerplate. Not even a little.
+
+What I pay attention to is staying sharp. There is a temptation, when reviewing a hundred AI-generated diffs, to skim. To trust that it looks right because it usually does. That trust is the danger. The moment you stop reading carefully is the moment something slips through.
+
+The role has changed. Writing is a smaller part of it. Reading, guiding, and testing carefully are the core now. That shift suits me. But it only works if the instinct built from years of writing is still active underneath.
+
+## A word for developers just starting out
+
+If you are early in your career, my advice is this: write as much code as possible yourself. Do not let the LLM do everything and just review the output. If you do that, you will lose track of the whole project. You will stop understanding why things are structured the way they are. You will miss the patterns. You will not build the instinct to know when something is wrong.
+
+The brain atrophy concern is real but it is not inevitable. If you sit on top of the whole process, carefully reading every diff, questioning every decision, understanding every abstraction the model reached for, you are still thinking. You are still building. The atrophy only happens if you disengage. If you treat the LLM as a magic box that produces correct code and your job is just to click merge, that is when you start losing something important.
+
+Use the tools. But stay in the kitchen.
