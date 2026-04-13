@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build --webpack",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
@@ -16,7 +16,7 @@
     "@heroicons/react": "^2.2.0",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
-    "@next/mdx": "^14.2.13",
+    "@next/mdx": "^16.2.3",
     "@radix-ui/react-slot": "^1.2.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/mdx": "^2.0.13",
