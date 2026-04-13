@@ -32,7 +32,7 @@ function CopyButton() {
   )
 }
 
-const BLOGFEED_REGEX = new RegExp('/blog/[0-9]+')
+const BLOGFEED_REGEX = new RegExp('/blog/[0-9]+$')
 
 function isBlogpost(pathname: string) {
   return !BLOGFEED_REGEX.test(pathname)
