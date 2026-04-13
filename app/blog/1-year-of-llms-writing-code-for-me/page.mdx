@@ -30,6 +30,14 @@ I stuck with it anyway, because even then the upside was real. Boilerplate that 
 
 The tools matured fast. Full repo context, agent-driven workflows, the ability to hold a task across multiple files without losing the thread. These changed what is possible in a single session. OpenCode is where most people I know have landed now as the standard for this kind of work.
 
+## Why OpenCode specifically
+
+One thing that separates OpenCode from earlier tools is that it runs autonomously. You describe a task and it works through it, reads files, edits code, runs commands, without stopping to ask for permission at every step. That sounds scary at first. In practice it is what makes it fast.
+
+But the design is thoughtful about safety. By default it operates in read-only mode. It can read your codebase freely but has to explicitly ask to write, delete, or run anything with side effects. That one decision removes a whole category of anxiety. You are not watching every keystroke waiting for it to do something destructive. You can let it work and check in on progress rather than approving every individual action.
+
+For anything sensitive, like running commands against a real environment, it has to override that default and tell you what it is about to do. That is the right mental model for working with an agent. Trust but with guardrails, and the guardrails are on by default.
+
 ## What my days actually look like now
 
 I spend most of my time doing three things.
