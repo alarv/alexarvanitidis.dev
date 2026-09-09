@@ -189,13 +189,6 @@ export const BLOG_POSTS: BlogPost[] = [
     image: '/blog/the-deploy-decalogue/opengraph-image.png',
   },
   {
-    title: 'Shipping production safeguards in weeks, not quarters',
-    description:
-      'How our team used LLMs to ship monitoring, alerting, typed contracts, end-to-end tests, and data quality checks faster than we ever could have done by hand.',
-    link: '/blog/shipping-production-safeguards-with-llms',
-    uid: 'blog/shipping-production-safeguards-with-llms',
-  },
-  {
     title: '1 year of LLMs writing code for me',
     description:
       'I have been an early adopter of AI coding tools since they became genuinely useful. Here is what that actually looks like day to day, and why experience matters more than ever.',
