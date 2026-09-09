@@ -666,7 +666,7 @@ export default function SurpriseButton() {
     <button
       onClick={handleSurprise}
       disabled={isActive}
-      className={`fixed bottom-12 left-4 z-50 transform rounded-full bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 px-4 py-2 text-sm font-medium text-white shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-xl sm:bottom-4 ${isActive ? 'cursor-not-allowed opacity-50' : 'hover:from-yellow-500 hover:via-orange-500 hover:to-red-500'} animate-pulse ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} `}
+      className={`fixed bottom-12 left-1/2 z-50 -translate-x-1/2 transform rounded-full bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 px-4 py-2 text-sm font-medium whitespace-nowrap text-white shadow-lg transition-all duration-500 hover:scale-105 hover:shadow-xl sm:bottom-4 sm:left-4 sm:translate-x-0 ${isActive ? 'cursor-not-allowed opacity-50' : 'hover:from-yellow-500 hover:via-orange-500 hover:to-red-500'} animate-pulse ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} `}
     >
       {isActive ? '✨ Surprising...' : '🎲 Surprise Me'}
     </button>

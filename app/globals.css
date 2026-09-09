@@ -147,3 +147,36 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Animated <details> expanders (blog "Expand:" sections, 0.5s max) */
+details > summary {
+  cursor: pointer;
+  list-style: none;
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+details > summary::before {
+  content: '▶';
+  display: inline-block;
+  margin-right: 0.4rem;
+  font-size: 0.7em;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+details[open] > summary::before {
+  transform: rotate(90deg);
+}
+details::details-content {
+  block-size: 0;
+  overflow: hidden;
+  transition:
+    block-size 0.5s ease,
+    content-visibility 0.5s allow-discrete;
+}
+details[open]::details-content {
+  block-size: auto;
+  block-size: calc-size(auto, size);
+}
