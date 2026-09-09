@@ -46,13 +46,23 @@ export default function BlogFeed({ page }: BlogFeedProps) {
                   href={post.link}
                   data-id={post.uid}
                 >
-                  <div className="flex flex-col space-y-1">
-                    <h4 className="my-2 font-medium dark:text-zinc-100">
-                      {post.title}
-                    </h4>
-                    <p className="text-zinc-500 dark:text-zinc-400">
-                      {post.description}
-                    </p>
+                  <div className="flex items-center gap-4">
+                    {post.image && (
+                      <img
+                        src={post.image}
+                        alt=""
+                        loading="lazy"
+                        className="h-16 w-16 shrink-0 rounded-lg object-cover"
+                      />
+                    )}
+                    <div className="flex flex-col space-y-1">
+                      <h4 className="my-2 font-medium dark:text-zinc-100">
+                        {post.title}
+                      </h4>
+                      <p className="text-zinc-500 dark:text-zinc-400">
+                        {post.description}
+                      </p>
+                    </div>
                   </div>
                 </Link>
               </AnimatedBackground>

@@ -21,6 +21,7 @@ type BlogPost = {
   description: string
   link: string
   uid: string
+  image?: string
 }
 
 type SocialLink = {
@@ -185,6 +186,14 @@ export const BLOG_POSTS: BlogPost[] = [
       'Ten commandments. If they are all true, ship it. The fear is cultural, not technical.',
     link: '/blog/the-deploy-decalogue',
     uid: 'blog/the-deploy-decalogue',
+    image: '/blog/the-deploy-decalogue/opengraph-image.png',
+  },
+  {
+    title: 'Shipping production safeguards in weeks, not quarters',
+    description:
+      'How our team used LLMs to ship monitoring, alerting, typed contracts, end-to-end tests, and data quality checks faster than we ever could have done by hand.',
+    link: '/blog/shipping-production-safeguards-with-llms',
+    uid: 'blog/shipping-production-safeguards-with-llms',
   },
   {
     title: '1 year of LLMs writing code for me',
@@ -192,6 +201,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'I have been an early adopter of AI coding tools since they became genuinely useful. Here is what that actually looks like day to day, and why experience matters more than ever.',
     link: '/blog/1-year-of-llms-writing-code-for-me',
     uid: 'blog/1-year-of-llms-writing-code-for-me',
+    image: '/blog/1-year-of-llms-writing-code-for-me/opengraph-image.jpg',
   },
   {
     title:
@@ -200,6 +210,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'A spoiler‑free reflection on why the BBC’s Celebrity Traitors UK shines: production, hosting, cast, and what it reveals about trust and deception.',
     link: '/blog/celebrity-traitors-uk-no-spoilers',
     uid: 'blog/celebrity-traitors-uk-no-spoilers',
+    image: '/blog/celebrity-traitors-uk-no-spoilers/opengraph-image.jpg',
   },
   {
     title: "The 5 worst bugs I've seen on production - #1 the N+1 problem",
@@ -207,6 +218,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'A tiny JOIN turned one request into ~100 queries—the graph looked like a heartbeat.',
     link: '/blog/worst-bugs-n-plus-one',
     uid: 'blog/worst-bugs-n-plus-one',
+    image: '/well-hidden-bug.jpg',
   },
   {
     title: "The 5 worst bugs I've seen on production - #2 the infinite crawler",
@@ -214,6 +226,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A 'Back to start' button shared the Next selector, looping forever and flooding the DB.",
     link: '/blog/worst-bugs-infinite-crawler',
     uid: 'blog/worst-bugs-infinite-crawler',
+    image: '/well-hidden-bug.jpg',
   },
   {
     title:
@@ -222,6 +235,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'A refund path ran twice for 15 minutes, costing €300k before a sanity check caught it.',
     link: '/blog/worst-bugs-double-refund-300k',
     uid: 'blog/worst-bugs-double-refund-300k',
+    image: '/well-hidden-bug.jpg',
   },
   {
     title: "The 5 worst bugs I've seen on production - #4 the $60 otp ddos",
@@ -229,6 +243,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'An OTP endpoint was abused across many IPs; budget burned twice after no action items.',
     link: '/blog/worst-bugs-60-dollar-ddos',
     uid: 'blog/worst-bugs-60-dollar-ddos',
+    image: '/well-hidden-bug.jpg',
   },
   {
     title:
@@ -237,6 +252,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Long sessions leaked ~2MB per animation; snapshots revealed unreleased lottie instances.',
     link: '/blog/worst-bugs-mobile-memory-leak',
     uid: 'blog/worst-bugs-mobile-memory-leak',
+    image: '/well-hidden-bug.jpg',
   },
   {
     title: 'Microlearning is the new way to learn',
@@ -244,6 +260,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'How I use microlearning to keep up with fast-moving tech trends through short, daily doses of content across social media and YouTube.',
     link: '/blog/microlearning-is-the-new-learning',
     uid: 'blog/microlearning-is-the-new-learning',
+    image: '/blog/microlearning-is-the-new-learning/opengraph-image.png',
   },
   {
     title: "Coding with Claude code and LLMs: What I've learned after 3 months",
@@ -251,6 +268,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Reflections on working daily with Claude Code and LLMs for three months, the benefits of full repo context, and why experience still matters.',
     link: '/blog/coding-with-claude-code-and-llms',
     uid: 'blog/coding-with-claude-code-and-llms',
+    image: '/blog/coding-with-claude-code-and-llms/opengraph-image.png',
   },
   {
     title: 'My experience with arrogant developers',
@@ -258,6 +276,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'A reflection on developer culture, code consistency, and the damage caused by ego-driven decisions in software teams.',
     link: '/blog/my-experience-with-arrogant-developers',
     uid: 'blog/my-experience-with-arrogant-developers',
+    image: '/blog/my-experience-with-arrogant-developers/opengraph-image.png',
   },
   {
     title: 'The luxury of letting ideas marinate',
@@ -265,6 +284,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'This post explores the power of letting ideas sit. It reflects on how having time, space, and a clear mind can lead to better solutions ,  especially in engineering and research. It contrasts rushed patches with well-thought-out fixes that emerge when pressure is low and the mind is calm.',
     link: '/blog/the-luxury-of-letting-ideas-marinate',
     uid: 'blog/the-luxury-of-letting-ideas-marinate',
+    image: '/blog/the-luxury-of-letting-ideas-marinate/opengraph-image.jpg',
   },
   {
     title: 'I asked AI about the future of AI (Yes, AI-ception)',
@@ -272,6 +292,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'I wanted to know: where is AI going in the next 10+ years? Is diving deeper into large language models (LLMs) in 2025 still a good bet for developers like me? What jobs will rise? What skills will matter?',
     link: '/blog/ai-job-trends-2035-aiception',
     uid: 'blog/ai-job-trends-2035-aiception',
+    image: '/blog/ai-job-trends-2035-aiception/opengraph-image.jpg',
   },
   {
     title: 'Decisions. Decisions. Decisions',
@@ -279,6 +300,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'How the impact of decisions at the right time is important for a fast-moving startup',
     link: '/blog/decisions-decisions-decisions',
     uid: 'blog/decisions-decisions-decisions',
+    image: '/blog/decisions-decisions-decisions/opengraph-image.png',
   },
   {
     title: "The plant that couldn't bloom",
@@ -286,12 +308,14 @@ export const BLOG_POSTS: BlogPost[] = [
       'There was a time I thought I wasn’t good enough. That I didn’t belong in tech. That I just couldn’t keep up.',
     link: '/blog/the-plant-that-could-not-bloom',
     uid: 'blog/the-plant-that-could-not-bloom',
+    image: '/blog/the-plant-that-could-not-bloom/opengraph-image.png',
   },
   {
     title: 'The art of the API abstraction',
     description: 'What is an API and how its abstraction is an art',
     link: '/blog/the-art-of-the-api-abstraction',
     uid: 'blog/the-art-of-the-api-abstraction',
+    image: '/blog/the-art-of-the-api-abstraction/opengraph-image.png',
   },
   {
     title:
@@ -300,6 +324,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'How to deploy an LLM on your own infra with terraform, Kubernetes and vLLM',
     link: '/blog/run-and-deploy-an-llm-part2',
     uid: 'run-and-deploy-an-llm-part2',
+    image: '/blog/run-and-deploy-an-llm-part2/opengraph-image.png',
   },
   {
     title:
@@ -307,12 +332,14 @@ export const BLOG_POSTS: BlogPost[] = [
     description: 'How to build a simple streaming API using Llama',
     link: '/blog/run-and-deploy-an-llm-part1',
     uid: 'run-and-deploy-an-llm-part1',
+    image: '/blog/run-and-deploy-an-llm-part1/opengraph-image.jpg',
   },
   {
     title: 'The death of boring docs',
     description: 'How frameworks with long documentations have failed',
     link: '/blog/the-death-of-boring-docs',
     uid: 'the-death-of-boring-docs',
+    image: '/blog/the-death-of-boring-docs/opengraph-image.jpg',
   },
   {
     title:
@@ -321,6 +348,8 @@ export const BLOG_POSTS: BlogPost[] = [
       'A look back at my first year of freelancing and what I learned',
     link: '/blog/the-overlooked-emotional-needs-of-senior-professionals',
     uid: 'the-overlooked-emotional-needs-of-senior-professionals',
+    image:
+      '/blog/the-overlooked-emotional-needs-of-senior-professionals/opengraph-image.jpg',
   },
 ]
 
