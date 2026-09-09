@@ -180,6 +180,13 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title: 'The deployment decalogue',
+    description:
+      'Ten commandments. If they are all true, ship it. The fear is cultural, not technical.',
+    link: '/blog/the-deploy-decalogue',
+    uid: 'blog/the-deploy-decalogue',
+  },
+  {
     title: '1 year of LLMs writing code for me',
     description:
       'I have been an early adopter of AI coding tools since they became genuinely useful. Here is what that actually looks like day to day, and why experience matters more than ever.',
