@@ -1,0 +1,135 @@
+export const metadata = {
+  title: "The deployment decalogue | Alex Arvanitidis's Blog",
+  description:
+    'Ten commandments. If they are all true, ship it. The fear is cultural, not technical.',
+  openGraph: {
+    title: 'The deployment decalogue',
+  },
+}
+
+export const revalidate = 3600 * 24
+
+# The deployment decalogue
+
+<PublishedOn date={new Date(2026, 8, 9)} />
+
+<Cover
+  src="/blog/the-deploy-decalogue/opengraph-image.png"
+  alt="The deployment decalogue: 10 commandments, if all true, ship it"
+  caption=""
+/>
+
+I am an ML engineer, but I come from a software engineering background: years of full-stack work, with heavy DevOps and Terraform experience. I come from teams that deploy to production five times a day with real continuous deployment. And honestly? Pressing the button still feels weird sometimes. Every engineer knows that feeling, no matter how good the safety net is.
+
+So I wrote down the list that settles it. Ten commandments, one flow, written with data scientists and ML teams in mind, but it works for batch jobs, realtime inference, and LLMs alike. Answer honestly, and if all ten are true, you can ship to production anytime, in any form or way.
+
+```
+I.   Does your deploy finish in under a minute?
+II.  Can you roll back in minutes?
+III. Do you have feature toggles with live changes?
+IV.  Does every change ship in two steps?
+V.   Do you have a test suite you actually trust?
+VI.  Do you test locally and in pre-prod?
+VII. Do you monitor everything important,
+     with deploys marked on your metrics?
+VIII.Do you have humans on watch who react to pings?
+IX.  Do you have backups, with a restore you ran?
+X.   Then ship without fear.
+```
+
+## I. Your deploy finishes in under a minute
+
+Slow deploys mean big batches, and big batches mean big incidents. If shipping takes an hour, nobody ships small. Make it fast and the batches shrink on their own.
+
+## II. You can roll back in minutes
+
+A rollback that takes 5-10 minutes means 5-10 minutes of customer impact. That is not a safety net, that is a scheduled outage with extra steps.
+
+<details>
+<summary>Expand: what "roll back in minutes" actually means</summary>
+
+Rollback means redeploying the previous version with one command: the exact same package (container image, release id) you shipped last time. Not rebuilding from a branch and praying. Not a forward fix disguised as a rollback.
+
+And it only works if your database changes are backwards compatible (see IV). If the new code migrated the schema in a breaking way, rolling back the code gives you old code on a new schema, which is a second incident wearing a trench coat.
+
+</details>
+
+## III. You have feature toggles with live changes
+
+Rollback is the airbag. Toggles are the brakes. A flag you can flip live, without a redeploy, turns a broken release into a non-event: kill the feature, keep the deploy. If your only way to disable something is shipping again, you will discover this at the worst possible moment.
+
+<details>
+<summary>Expand: what a toggle looks like in practice</summary>
+
+Somewhere in your request path: if the `new-ranker` flag is on, use the new code path, else the old one. The flag lives outside the deploy, in a dashboard or config service, so flipping it takes seconds and no pipeline.
+
+Two rules. One: every flag is a kill switch first, an experiment second. Two: flags are short-lived. A flag that survives three months is not a toggle, it is a second codebase hiding behind a boolean. Clean it up.
+
+</details>
+
+## IV. Every change ships in two steps
+
+No single deploy may break the previous version. For databases, that means expand/contract: a fancy name for a simple idea, explained below. For APIs, that means shipping a `/v2` next to `/v1`, so everyone still using the old one keeps working. Backwards compatibility everywhere, or one deploy is all it takes.
+
+<details>
+<summary>Expand: what two-step looks like in practice</summary>
+
+Say you need to rename a column from `name` to `full_name`. The one-step version renames it and ships, and every running copy of the old code crashes the moment it asks for the old name. The two-step version:
+
+Step one (expand): add the new `full_name` column as nullable. Deploy code that writes to both columns and still reads the old one. Backfill old rows at leisure.
+
+Step two (contract), a deploy later: switch all reads to `full_name`, stop writing `name`, drop the old column.
+
+Same idea for APIs. Need to change a response shape? Ship `/v2` next to `/v1`. Migrate your clients over. Deprecate `/v1` later. At no point does a deploy break anyone who has not moved yet.
+
+The pattern is always the same: first make the new thing exist without removing the old thing, then remove the old thing once nothing depends on it.
+
+</details>
+
+## V. You have a test suite you actually trust
+
+Tests come in layers. Unit tests check tiny pieces in isolation. Integration tests check pieces working together. E2e (end-to-end) tests use your whole app the way a real user would, clicking buttons and calling APIs. You want all three, with e2e covering your most important user journeys. The question is simple: would they catch a regression before deploy? If the answer is "probably not", your tests are decoration.
+
+## VI. You test locally and in pre-prod
+
+If you can run e2e locally and verify with your own eyes whatever the LLM just wrote, you are a king. Local runs catch the dumb stuff in seconds. Pre-prod catches the stuff that only shows up under prod-like conditions. Skip either, and you are testing in production but without admitting it.
+
+<details>
+<summary>Expand: what local testing looks like</summary>
+
+Spin up the real thing on your machine: containers, a database pre-filled with fake-but-realistic data, the same suite CI runs. Then read the diff the LLM produced, run it, and watch it do its job. Trust but verify, every time.
+
+Pre-prod is the second half: the full suite against prod-like data on every ship. Local proves it works. Pre-prod proves it works somewhere that is not your laptop.
+
+</details>
+
+## VII. You monitor everything important, with deploys marked on your metrics
+
+Customers should never be your alerting system. And every metric, log, and trace carries deploy markers and version labels. Monitoring tells you something is wrong. Markers tell you which deploy did it.
+
+<details>
+<summary>Expand: what a deploy marker looks like</summary>
+
+It can be as simple as a sticky-note line on your graphs that says "release 4821, 14:02". Or a label attached to every metric and log line, like the app version or git sha (the id of the exact code that is running).
+
+The payoff: error rate spikes at 14:03, and the marker says a deploy happened at 14:02. Investigation over in ten seconds. Without markers, that same spike is a mystery that eats an afternoon.
+
+</details>
+
+## VIII. You have humans on watch
+
+On-call procedures, and people actually watching during work hours. Getting pinged and reacting fast is the best safety net there is. All the dashboards in the world are worthless if nobody looks at them when they scream.
+
+## IX. You have backups, and you have tested the restore
+
+Snapshot before destructive migrations. And run the restore procedure for real, before you need it. An untested backup is a rumor.
+
+## X. Ship without fear
+
+Here is the funny thing: most teams don't have even half of these commandments in place, and they still ship to production. Every day. The world keeps turning.
+
+So if you are on a team that keeps all nine, know what you have. That is a privilege. A luxury. Most engineers spend most of their careers without half of this safety net, shipping carefully and a little scared, because they have to. You won't always have it, so appreciate it while you do.
+
+And use it. Having all nine means there is nothing left to be afraid of. That is the whole point of building them. Small batches, deployed daily, each one boring. Five boring deploys a day beats one terrifying release a month.
+
+So ship it.
