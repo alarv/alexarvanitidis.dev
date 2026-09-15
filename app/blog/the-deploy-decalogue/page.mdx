@@ -21,20 +21,20 @@ export const revalidate = 3600 * 24
 
 I am an ML engineer, but I come from a software engineering background: years of full-stack work, with heavy DevOps and Terraform experience. I come from teams that deploy to production five times a day with real continuous deployment. And honestly? Pressing the button still feels weird sometimes. Every engineer knows that feeling, no matter how good the safety net is.
 
-So I wrote down the list that settles it. Ten commandments, one flow, written with data scientists and ML teams in mind, but it works for batch jobs, realtime inference, and LLMs alike. Answer honestly, and if all ten are true, you can ship to production anytime, in any form or way.
+So I wrote down the list that settles it. Ten commandments, one flow, written with data scientists and ML teams in mind, but it works for batch jobs, realtime inference, and LLMs alike. Check them honestly, and if all ten hold, you can ship to production anytime, in any form or way.
 
 ```
-I.   Does your deploy finish in under a minute?
-II.  Can you roll back in minutes?
-III. Do you have feature toggles with live changes?
-IV.  Does every change ship in two steps?
-V.   Do you have a test suite you actually trust?
-VI.  Do you test locally and in pre-prod?
-VII. Do you monitor everything important,
-     with deploys marked on your metrics?
-VIII.Do you have humans on watch who react to pings?
-IX.  Do you have backups, with a restore you ran?
-X.   Then ship without fear.
+I.    Your deploy finishes in under a minute.
+II.   You can roll back in minutes.
+III.  You have feature toggles with live changes.
+IV.   Every change ships in two steps.
+V.    You have a test suite you actually trust.
+VI.   You test locally and in pre-prod.
+VII.  You monitor everything important,
+      with deploys marked on your metrics.
+VIII. You have humans on watch who react to pings.
+IX.   You have backups, with a restore you ran.
+X.    You ship without fear.
 ```
 
 ## I. Your deploy finishes in under a minute
