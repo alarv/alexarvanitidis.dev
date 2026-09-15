@@ -22,6 +22,7 @@ type BlogPost = {
   link: string
   uid: string
   image?: string
+  date: string
 }
 
 type SocialLink = {
@@ -186,6 +187,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Ten commandments. If they are all true, ship it. The fear is cultural, not technical.',
     link: '/blog/the-deploy-decalogue',
     uid: 'blog/the-deploy-decalogue',
+    date: '2026-09-09',
     image: '/blog/the-deploy-decalogue/opengraph-image.png',
   },
   {
@@ -194,6 +196,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'I have been an early adopter of AI coding tools since they became genuinely useful. Here is what that actually looks like day to day, and why experience matters more than ever.',
     link: '/blog/1-year-of-llms-writing-code-for-me',
     uid: 'blog/1-year-of-llms-writing-code-for-me',
+    date: '2026-04-13',
     image: '/blog/1-year-of-llms-writing-code-for-me/opengraph-image.jpg',
   },
   {
@@ -203,6 +206,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'A spoiler‑free reflection on why the BBC’s Celebrity Traitors UK shines: production, hosting, cast, and what it reveals about trust and deception.',
     link: '/blog/celebrity-traitors-uk-no-spoilers',
     uid: 'blog/celebrity-traitors-uk-no-spoilers',
+    date: '2025-11-10',
     image: '/blog/celebrity-traitors-uk-no-spoilers/opengraph-image.jpg',
   },
   {
@@ -211,6 +215,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'A tiny JOIN turned one request into ~100 queries—the graph looked like a heartbeat.',
     link: '/blog/worst-bugs-n-plus-one',
     uid: 'blog/worst-bugs-n-plus-one',
+    date: '2025-09-09',
     image: '/well-hidden-bug.jpg',
   },
   {
@@ -219,6 +224,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "A 'Back to start' button shared the Next selector, looping forever and flooding the DB.",
     link: '/blog/worst-bugs-infinite-crawler',
     uid: 'blog/worst-bugs-infinite-crawler',
+    date: '2025-09-09',
     image: '/well-hidden-bug.jpg',
   },
   {
@@ -228,6 +234,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'A refund path ran twice for 15 minutes, costing €300k before a sanity check caught it.',
     link: '/blog/worst-bugs-double-refund-300k',
     uid: 'blog/worst-bugs-double-refund-300k',
+    date: '2025-09-09',
     image: '/well-hidden-bug.jpg',
   },
   {
@@ -236,6 +243,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'An OTP endpoint was abused across many IPs; budget burned twice after no action items.',
     link: '/blog/worst-bugs-60-dollar-ddos',
     uid: 'blog/worst-bugs-60-dollar-ddos',
+    date: '2025-09-09',
     image: '/well-hidden-bug.jpg',
   },
   {
@@ -245,6 +253,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Long sessions leaked ~2MB per animation; snapshots revealed unreleased lottie instances.',
     link: '/blog/worst-bugs-mobile-memory-leak',
     uid: 'blog/worst-bugs-mobile-memory-leak',
+    date: '2025-09-09',
     image: '/well-hidden-bug.jpg',
   },
   {
@@ -253,6 +262,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'How I use microlearning to keep up with fast-moving tech trends through short, daily doses of content across social media and YouTube.',
     link: '/blog/microlearning-is-the-new-learning',
     uid: 'blog/microlearning-is-the-new-learning',
+    date: '2025-08-02',
     image: '/blog/microlearning-is-the-new-learning/opengraph-image.png',
   },
   {
@@ -261,6 +271,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'Reflections on working daily with Claude Code and LLMs for three months, the benefits of full repo context, and why experience still matters.',
     link: '/blog/coding-with-claude-code-and-llms',
     uid: 'blog/coding-with-claude-code-and-llms',
+    date: '2025-05-26',
     image: '/blog/coding-with-claude-code-and-llms/opengraph-image.png',
   },
   {
@@ -269,6 +280,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'A reflection on developer culture, code consistency, and the damage caused by ego-driven decisions in software teams.',
     link: '/blog/my-experience-with-arrogant-developers',
     uid: 'blog/my-experience-with-arrogant-developers',
+    date: '2025-06-24',
     image: '/blog/my-experience-with-arrogant-developers/opengraph-image.png',
   },
   {
@@ -277,6 +289,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'This post explores the power of letting ideas sit. It reflects on how having time, space, and a clear mind can lead to better solutions ,  especially in engineering and research. It contrasts rushed patches with well-thought-out fixes that emerge when pressure is low and the mind is calm.',
     link: '/blog/the-luxury-of-letting-ideas-marinate',
     uid: 'blog/the-luxury-of-letting-ideas-marinate',
+    date: '2025-04-28',
     image: '/blog/the-luxury-of-letting-ideas-marinate/opengraph-image.jpg',
   },
   {
@@ -285,6 +298,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'I wanted to know: where is AI going in the next 10+ years? Is diving deeper into large language models (LLMs) in 2025 still a good bet for developers like me? What jobs will rise? What skills will matter?',
     link: '/blog/ai-job-trends-2035-aiception',
     uid: 'blog/ai-job-trends-2035-aiception',
+    date: '2025-04-07',
     image: '/blog/ai-job-trends-2035-aiception/opengraph-image.jpg',
   },
   {
@@ -293,6 +307,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'How the impact of decisions at the right time is important for a fast-moving startup',
     link: '/blog/decisions-decisions-decisions',
     uid: 'blog/decisions-decisions-decisions',
+    date: '2025-04-16',
     image: '/blog/decisions-decisions-decisions/opengraph-image.png',
   },
   {
@@ -301,6 +316,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'There was a time I thought I wasn’t good enough. That I didn’t belong in tech. That I just couldn’t keep up.',
     link: '/blog/the-plant-that-could-not-bloom',
     uid: 'blog/the-plant-that-could-not-bloom',
+    date: '2025-03-01',
     image: '/blog/the-plant-that-could-not-bloom/opengraph-image.png',
   },
   {
@@ -308,6 +324,7 @@ export const BLOG_POSTS: BlogPost[] = [
     description: 'What is an API and how its abstraction is an art',
     link: '/blog/the-art-of-the-api-abstraction',
     uid: 'blog/the-art-of-the-api-abstraction',
+    date: '2025-03-18',
     image: '/blog/the-art-of-the-api-abstraction/opengraph-image.png',
   },
   {
@@ -317,6 +334,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'How to deploy an LLM on your own infra with terraform, Kubernetes and vLLM',
     link: '/blog/run-and-deploy-an-llm-part2',
     uid: 'run-and-deploy-an-llm-part2',
+    date: '2024-12-15',
     image: '/blog/run-and-deploy-an-llm-part2/opengraph-image.png',
   },
   {
@@ -325,6 +343,7 @@ export const BLOG_POSTS: BlogPost[] = [
     description: 'How to build a simple streaming API using Llama',
     link: '/blog/run-and-deploy-an-llm-part1',
     uid: 'run-and-deploy-an-llm-part1',
+    date: '2024-11-15',
     image: '/blog/run-and-deploy-an-llm-part1/opengraph-image.jpg',
   },
   {
@@ -332,6 +351,7 @@ export const BLOG_POSTS: BlogPost[] = [
     description: 'How frameworks with long documentations have failed',
     link: '/blog/the-death-of-boring-docs',
     uid: 'the-death-of-boring-docs',
+    date: '2024-04-15',
     image: '/blog/the-death-of-boring-docs/opengraph-image.jpg',
   },
   {
@@ -341,6 +361,7 @@ export const BLOG_POSTS: BlogPost[] = [
       'A look back at my first year of freelancing and what I learned',
     link: '/blog/the-overlooked-emotional-needs-of-senior-professionals',
     uid: 'the-overlooked-emotional-needs-of-senior-professionals',
+    date: '2023-12-15',
     image:
       '/blog/the-overlooked-emotional-needs-of-senior-professionals/opengraph-image.jpg',
   },

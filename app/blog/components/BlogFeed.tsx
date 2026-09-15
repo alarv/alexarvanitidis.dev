@@ -2,6 +2,7 @@
 
 import { AnimatedBackground } from '@/components/ui/animated-background'
 import { BLOG_POSTS } from '@/app/data'
+import { formatDistance } from 'date-fns/formatDistance'
 import Link from 'next/link'
 import {
   Pagination,
@@ -61,6 +62,11 @@ export default function BlogFeed({ page }: BlogFeedProps) {
                       </h4>
                       <p className="text-zinc-500 dark:text-zinc-400">
                         {post.description}
+                      </p>
+                      <p className="text-xs text-zinc-400 dark:text-zinc-500">
+                        {formatDistance(new Date(post.date), new Date(), {
+                          addSuffix: true,
+                        })}
                       </p>
                     </div>
                   </div>
