@@ -33,6 +33,13 @@
 - For real incidents, include "in production" in the title to distinguish from dev-only issues.
 - Keep tone simple and direct; prefer short paragraphs; avoid marketing or overly flashy language.
 
+## Blog Images & Project Videos
+
+- Each post has `app/blog/<slug>/opengraph-image.jpg` at 1200×630, used for link previews, the `<Cover>` under the date, and the feed thumbnail (`image` in `BLOG_POSTS`, `app/data.ts`). Keep it a JPEG under ~100 KB; a PNG of an illustration is 700 KB+.
+- Agents cannot generate images. Don't draw text-on-dark cards in code as a substitute: the author rejected that. Write an image-model prompt for the author instead (colorful, flat, no text, landscape 1.91:1), then crop/resize the result with PIL.
+- New posts are not live until added to the top of `BLOG_POSTS` in `app/data.ts`.
+- Project videos in `PROJECTS` are direct Cloudinary URLs (`https://res.cloudinary.com/dofjdeyrh/video/upload/<public_id>.mp4`), not the `player.cloudinary.com` embed link. Uploading is the author's job.
+
 ## Testing Guidelines
 
 - No unit test framework is configured. Include manual verification steps and screenshots in PRs (affected routes, states, breakpoints). If adding complex logic, consider adding lightweight Jest/Vitest in a separate PR.

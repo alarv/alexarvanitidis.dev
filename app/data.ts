@@ -32,6 +32,15 @@ type SocialLink = {
 
 export const PROJECTS: Project[] = [
   {
+    id: 'lethe',
+    name: 'Lethe',
+    description:
+      'An MCP server that gives coding agents persistent memory across sessions: recall, note, confirm, correct, forget.',
+    video:
+      'https://res.cloudinary.com/dofjdeyrh/video/upload/lethe-demo_uusdit.mp4',
+    link: 'https://github.com/alarv/lethe',
+  },
+  {
     id: 'qsarion',
     name: 'QSARion AI Agent',
     description:
@@ -181,6 +190,15 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 ]
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    title: 'Never just restart it',
+    description:
+      "Turning it off and on again isn't always the answer. A restart hides the bug and it comes back. Dig once, win every day after.",
+    link: '/blog/never-just-restart-it',
+    uid: 'blog/never-just-restart-it',
+    date: '2026-10-08',
+    image: '/blog/never-just-restart-it/opengraph-image.jpg',
+  },
   {
     title: 'The deployment decalogue',
     description:

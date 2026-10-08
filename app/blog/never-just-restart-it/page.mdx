@@ -1,0 +1,109 @@
+export const metadata = {
+  title: "Never just restart it | Alex Arvanitidis's Blog",
+  description:
+    "Turning it off and on again isn't always the answer. A restart hides the bug and it comes back. Dig once, win every day after.",
+  openGraph: {
+    title: 'Never just restart it',
+  },
+}
+
+export const revalidate = 3600 * 24
+
+# Never just restart it
+
+<PublishedOn date={new Date(2026, 9, 8)} />
+
+<Cover
+  src="/blog/never-just-restart-it/opengraph-image.jpg"
+  alt="A friendly robot pressing a restart button again and again, while a tangled ball of wires and a magnifying glass sit ignored"
+  caption=""
+/>
+
+"Have you tried turning it off and on again?" It is the oldest joke in IT, and it is a joke because it works. That is exactly the problem.
+
+<figure className="flex flex-col items-center">
+  <img
+    src="/it-crowd-turn-it-off-and-on.gif"
+    alt="Roy from The IT Crowd answering the phone: Hello IT, have you tried turning it off and on again?"
+    className="rounded-xl"
+  />
+  <figcaption className="text-center">
+    The IT Crowd, the origin of the meme.
+  </figcaption>
+</figure>
+
+Whenever I hear "I restarted my computer and it worked", or "I restarted the wifi", or "I restarted the VPN and it was fine", a small alarm goes off. Not because the person did anything wrong. Restarting is a perfectly good first move. The alarm goes off because it is so often the last move too.
+
+## Why a restart is a smell
+
+A restart resets the state of the thing. And the state is usually where the bug lives. So you get a working system, and you lose the evidence. You don't know what was wrong, you don't know why the restart helped, and you know for sure it will come back.
+
+You didn't fix anything. You paid the cost again, later, with interest.
+
+## Story one: the five minutes that happened ten times a day
+
+At a company I worked for, our front-end assets were built and served through Maven. To see a change in a JavaScript asset, most people did this: edit the file, run `mvn clean install`, wait five minutes, check the result. Then repeat.
+
+Five minutes, almost ten times a day. That is close to an hour of waiting, every day, for every person.
+
+I got tired of waiting, so I dug into the tool. What is the `target` folder? How are assets stored in it? Where is the final JavaScript file that the app actually uses? It turns out Maven works with what is inside `target`, and that is the copy that gets served. So you can change the asset right there, and Maven sees it immediately. No clean, no install, no five minutes.
+
+<details>
+<summary>Expand: what the target folder is</summary>
+
+When Maven builds a project, it puts everything it produces into the `target` folder: compiled code, copied resources, the packaged artifact. The running app uses that built copy, not your source files.
+
+Normally you edit the source and `mvn clean install` rebuilds `target` from scratch. That is the slow part. If you only changed one JS file, you can change the already-built copy directly and skip the rebuild.
+
+One catch: the next `clean` wipes `target`, so make the same change in your source too. The `target` edit is for fast feedback, the source edit is the real one.
+
+</details>
+
+I posted the explanation in Slack. Almost nobody used it.
+
+I don't think that was laziness. Learning the internals of a tool you don't know you need is boring, and any small hiccup is enough to send you back to the thing that always works. If the fix isn't dead simple, it loses to the restart. And the restart wins quietly, every day.
+
+## Story two: the VPN that needed a reload
+
+At my current company, working from home on the VPN, pages would stop loading. Reload once, twice, sometimes three times a day, and they worked. Everyone had the same experience, and everyone had the same fix: restart the VPN, reload the page, move on.
+
+I couldn't work like that. Reloading pages two or three times a day to see them working felt unacceptable, so I opened a ticket with the helpdesk.
+
+The fix took five minutes. The helpdesk expert pointed me to one setting and explained why it matters: on the Mac, go to Wi-Fi, Details, TCP/IP, and set IPv6 to "Link-Local Only". Full IPv6 addressing is something our VPN can't handle correctly, so traffic was wandering off outside the tunnel. With the setting changed, the traffic goes through the tunnel as it should. (That is the explanation I was given, and ChatGPT agrees with it.)
+
+I take no credit for that fix. All I did was refuse to accept the workaround and ask someone who knew. People had been living with the problem for a long time, and I'm sure many of them had restarted the VPN a hundred times. The only thing missing was somebody opening a ticket.
+
+## The math
+
+This is the part that makes digging worth it:
+
+- Spend 30 minutes once finding the real cause.
+- Win back 5 minutes every time it would have happened.
+- At five times a day, you are even by the end of the first day.
+
+After that it is pure profit, for you and for everyone you tell. Even if you don't have the exact numbers, the shape is always the same: a small fixed cost, against a small cost you pay forever.
+
+## The AI era makes this worse
+
+Right now we are shipping faster than ever, and reviewing less than ever. Code gets generated, it looks right, it goes out. Nobody reads it deeply, because nobody has the time.
+
+The "regenerate" button is the new "turn it off and on again". The output is wrong, so you run it again. And again. You change the prompt a bit, and at some point it works, and you move on. You don't know why it was wrong. You don't know why it is right now. It is the same behaviour with a shinier tool.
+
+That is why debugging matters more now, not less. When more code is written by something that cannot be asked "why", the person who understands the system deeply is the one who can tell a real fix from a lucky one. Reading the code, forming a theory, testing it: that skill is what separates engineers from people operating a machine.
+
+## When restarting is fine
+
+I am not saying never restart anything. Some things are not worth your time. My Mac decides it doesn't need wifi today maybe twice a year, and restarting is the only fix I know. Spending 30 minutes to hunt a bug that appears twice a year costs more than it ever saves.
+
+Here is the rule I use:
+
+- Restart once, and notice that you did.
+- If you restart for the same thing a second time, it isn't bad luck anymore. It is a bug. Time to dig.
+
+Frequency is the whole decision. Twice a year, restart. Five times a day, investigate.
+
+## Dig once
+
+Next time something works after a restart, ask one question: "Why did that help?" You don't need to answer it right now. Just ask it. If it keeps coming back, you will have a reason to finally find out, and a good chance that a ticket, a Slack message, or half an hour of reading will make it disappear for everyone.
+
+Dig once. Win every day after.
