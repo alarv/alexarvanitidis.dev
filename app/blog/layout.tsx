@@ -63,6 +63,9 @@ export default function LayoutBlogPost({
         {children}
         {isBlogpost(pathname) && (
           <>
+            <div className="my-5">
+              <Claps />
+            </div>
             <RelatedPosts pathname={pathname} />
             <div className="my-5">
               <Link
@@ -72,9 +75,6 @@ export default function LayoutBlogPost({
                 <ArrowLeft size={18} /> {/* You can tweak the size here */}
                 Back to blog
               </Link>
-            </div>
-            <div className="my-5">
-              <Claps />
             </div>
           </>
         )}
