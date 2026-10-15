@@ -191,6 +191,15 @@ export const WORK_EXPERIENCE: WorkExperience[] = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title: 'Not ten, eleven',
+    description:
+      "I broke the build and kept playing Mario Kart. You can never know how important something is until you stand in the other person's shoes.",
+    link: '/blog/not-ten-eleven',
+    uid: 'blog/not-ten-eleven',
+    date: '2026-10-15',
+    image: '/blog/not-ten-eleven/opengraph-image.jpg',
+  },
+  {
     title: 'Never just restart it',
     description:
       "Turning it off and on again isn't always the answer. A restart hides the bug and it comes back. Dig once, win every day after.",

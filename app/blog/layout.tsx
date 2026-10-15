@@ -3,6 +3,7 @@ import { TextMorph } from '@/components/ui/text-morph'
 import { ScrollProgress } from '@/components/ui/scroll-progress'
 import { useEffect, useState } from 'react'
 import Claps from '@/app/blog/components/Claps'
+import RelatedPosts from '@/app/blog/components/RelatedPosts'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
@@ -62,6 +63,7 @@ export default function LayoutBlogPost({
         {children}
         {isBlogpost(pathname) && (
           <>
+            <RelatedPosts pathname={pathname} />
             <div className="my-5">
               <Link
                 href="/blog/1"

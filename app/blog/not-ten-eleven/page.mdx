@@ -1,0 +1,78 @@
+export const metadata = {
+  title: "Not ten, eleven | Alex Arvanitidis's Blog",
+  description:
+    'I broke the build and kept playing Mario Kart. Years later I understood why you can never know how important something is until you stand in the other person\'s shoes.',
+  openGraph: {
+    title: 'Not ten, eleven',
+  },
+}
+
+export const revalidate = 3600 * 24
+
+# Not ten, eleven
+
+<PublishedOn date={new Date(2026, 9, 15)} />
+
+<Cover
+  src="/blog/not-ten-eleven/opengraph-image.jpg"
+  alt="A smug developer playing a handheld console next to an amber traffic light, while angry coworkers point at them in the background"
+  caption=""
+/>
+
+At the start of my career I was a cocky little guy. I thought I knew a lot. Turns out I had a lot to learn, and I learned most of it from the people around me. This is one of those lessons.
+
+## The traffic light
+
+I was working at a company with a huge backend monolith. They deployed once or twice a day, and the rules were simple:
+
+- If the build was **green**, anyone could deploy.
+- If the build was **amber** or **red**, nobody could. Something was broken: failing tests, a failed build, anything like that.
+
+Nobody told me this. I just didn't know.
+
+## The change that was "minor"
+
+I shipped a small change. If I remember right it was a template tweak in the JSPs (Java Server Pages, old school technology, lol). Nothing scary.
+
+The build went amber. I didn't notice, and even if I had, I wouldn't have understood what it meant.
+
+Two hours went by. I went to lunch, and I was playing Mario Kart on my break when the head of systems came over and said: "Alex, you broke the build."
+
+I said ok. And I kept playing.
+
+Let me say that again. **The head of systems walked over to me**, and I finished my race. I didn't stand up, and I didn't go unblock everyone. I had no idea how important it was.
+
+After lunch I fixed it. Then the head of the backend came to my desk to tell me off: "Hey man, the build was amber for two hours, eh?"
+
+To be fair, nobody had anything urgent to ship that day. But if they had, I would have been the blocker. With 2-3 releases a day, and some of them urgent, that is a real problem.
+
+## Eleven
+
+Later I asked my manager, smiling, because in my head this was not a big deal: "How important was that, from 1 to 10?"
+
+He answered immediately, and angrily: "TEN."
+
+Then he thought about it for a second, turned back and said: "Actually, ELEVEN."
+
+That is the title of this post. It is also the thing that stayed with me.
+
+## The funny part
+
+Fast forward to today. At my current job I'm sometimes the one waiting. After we create a deployment, it needs an approval on Slack. It takes my manager about an hour on average to approve it. The request was already there, and he had a heads up that it was coming.
+
+I'm sure he doesn't see it as important. For him it's one more notification between a hundred other things. For us, the deployment is the thing we are waiting on.
+
+And that is exactly how I felt back then. Mario Kart was on, and the build was just a color on a screen. Two heads of department had to come and tell me, and one of them found me in the middle of a race.
+
+## You can't know until you stand in their shoes
+
+You can never know how important something is to someone else until you see their day from where they sit. What is "minor" for you may be the only thing blocking five other people.
+
+A few things I try to do now:
+
+- When someone tells me I'm blocking them, I stop what I'm doing. I ask the questions later.
+- Before I ship, I check what state the thing is in. If it's red, I look at it right away.
+- When I'm the one waiting, I say how important it is and why, instead of assuming the other person knows. "It's blocking the team's release" lands better than a link in Slack.
+- If I don't understand why something is urgent, I ask "how important is it from 1 to 10?" And I listen to the answer.
+
+The answer may be ten. It may be eleven.
